@@ -17,7 +17,7 @@ class PlansControllerTest < ActionDispatch::IntegrationTest
 
   test "should create plan" do
     assert_difference('Plan.count') do
-      post plans_url, params: { plan: { fee: @plan.fee, max_book: @plan.max_book, max_price: @plan.max_price, name: @plan.name, no_book: @plan.no_book, security: @plan.security } }
+      post plans_url, params: { plan: { name: @plan.name } }
     end
 
     assert_redirected_to plan_url(Plan.last)
@@ -34,7 +34,7 @@ class PlansControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update plan" do
-    patch plan_url(@plan), params: { plan: { fee: @plan.fee, max_book: @plan.max_book, max_price: @plan.max_price, name: @plan.name, no_book: @plan.no_book, security: @plan.security } }
+    patch plan_url(@plan), params: { plan: { name: @plan.name } }
     assert_redirected_to plan_url(@plan)
   end
 

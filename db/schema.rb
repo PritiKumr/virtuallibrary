@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902125527) do
+ActiveRecord::Schema.define(version: 20160906122838) do
 
   create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20160902125527) do
     t.integer  "user_id"
     t.float    "value",      limit: 24
     t.boolean  "status"
-    t.integer  "order_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
@@ -78,19 +77,26 @@ ActiveRecord::Schema.define(version: 20160902125527) do
 
   create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
-    t.float    "fee",        limit: 24
-    t.float    "security",   limit: 24
-    t.integer  "no_book"
-    t.integer  "max_book"
-    t.float    "max_price",  limit: 24
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "publications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sub_plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
+    t.float    "fee",        limit: 24
+    t.string   "security"
+    t.integer  "no_book"
+    t.string   "max_book"
+    t.float    "max_price",  limit: 24
+    t.integer  "plan_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

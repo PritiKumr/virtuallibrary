@@ -2,16 +2,6 @@
 
 one:
   name: MyString
-  fee: 1.5
-  security: 1.5
-  no_book: 1
-  max_book: 1
-  max_price: 1.5
 
 two:
   name: MyString
-  fee: 1.5
-  security: 1.5
-  no_book: 1
-  max_book: 1
-  max_price: 1.5

@@ -5,30 +5,5 @@
   <%= @plan.name %>
 </p>
 
-<p>
-  <strong>Fee:</strong>
-  <%= @plan.fee %>
-</p>
-
-<p>
-  <strong>Security:</strong>
-  <%= @plan.security %>
-</p>
-
-<p>
-  <strong>No book:</strong>
-  <%= @plan.no_book %>
-</p>
-
-<p>
-  <strong>Max book:</strong>
-  <%= @plan.max_book %>
-</p>
-
-<p>
-  <strong>Max price:</strong>
-  <%= @plan.max_price %>
-</p>
-
 <%= link_to 'Edit', edit_plan_path(@plan) %> |
 <%= link_to 'Back', plans_path %>
