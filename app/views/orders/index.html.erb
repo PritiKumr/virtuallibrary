@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Value</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.user_id %></td>
+        <td><%= order.value %></td>
+        <td><%= order.status %></td>
+        <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'Cancel your Order', order, method: :delete, data: { confirm: 'Not Fair :( Are you sure you, want to cancel this rented book ?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

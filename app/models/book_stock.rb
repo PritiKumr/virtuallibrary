@@ -1,0 +1,2 @@
+class BookStock < ApplicationRecord
+end

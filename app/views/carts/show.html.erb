@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <% @cart_books.each do |cart_book| %>
+    <%= cart_book.price %>
+    <%= cart_book.book.name %>
+    <%= cart_book.book.author_name %>
+    <%= cart_book.book.publication_name %>
+  <% end %>
+</p>
+<p>
+  <strong>Total Cart Value:</strong>
+  <%= @cart.value %>
+</p>
+
+<%= link_to 'Continue renting more books', books_url %>
+<%= link_to 'Place Order', cart_orders_path(@cart), method: :post  %>
