@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @user_info.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @user_info.last_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @user_info.address %>
+</p>
+
+<p>
+  <strong>Contact no:</strong>
+  <%= @user_info.contact_no %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @user_info.gender %>
+</p>
+
+<p>
+  <strong>Plan:</strong>
+  <% @plan = current_user.sub_plan %>
+  <% if @plan.present? %>
+  You have membership of
+    <%= @plan.plan.name %>
+    <!-- TODO Make SubPlan as scaffold instead of just a model. -->
+    <%= @plan.name %> Pack <%= link_to 'Change Plan', plans_url %>
+<% else %>
+  Buy best plans for you <%= link_to 'here', plans_url %>.
+<% end %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @user_info.user_status %>
+</p>
+
+<%= link_to 'Edit', edit_user_info_path(@user_info) %> |
+<%= link_to 'Back', root_path %>
