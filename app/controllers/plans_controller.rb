@@ -61,6 +61,22 @@ class PlansController < ApplicationController
     end
   end
 
+  def select_plan
+    current_user.user_plan.create(sub_plan_id: params[:sub_plan_id])
+    respond_to do |format|
+      format.html { redirect_to user_info_path(current_user.user_info), notice: 'You have successfully selected the best plan for yourself.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def change_plan
+    current_user.user_plan.update(sub_plan_id: params[:sub_plan_id])
+    respond_to do |format|
+      format.html { redirect_to user_info_path(current_user.user_info), notice: 'You have successfully selected the best plan for yourself.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_plan

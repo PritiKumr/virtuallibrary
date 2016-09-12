@@ -4,5 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :orders
+  has_one :user_info
+  has_one :cart
+  has_one :user_plan
+  has_one :sub_plan, through: :user_plan
+
+  def is_active?
+    user_info.status?
+  end
 
 end

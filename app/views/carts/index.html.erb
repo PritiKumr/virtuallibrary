@@ -1,31 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Carts</h1>
+<p>
+  <% @cart_books.each do |cart_book| %>
+    <%= cart_book.price %>
+    <%= cart_book.book.name %>
+    <%= cart_book.book.author_name %>
+    <%= cart_book.book.publication_name %>
+  <% end %>
+</p>
+<p>
+  <strong>Total Cart Value:</strong>
+  <%= @cart.value %>
+</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Book</th>
-      <th>Value</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @carts.each do |cart| %>
-      <tr>
-        <td><%= cart.user_id %></td>
-        <td><%= cart.book_id %></td>
-        <td><%= cart.value %></td>
-        <td><%= link_to 'Show', cart %></td>
-        <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-        <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Cart', new_cart_path %>
+<%= link_to 'Continue renting more books', books_url %>
+<%= link_to 'Place Order', cart_orders_path(@cart), method: :post  %>
