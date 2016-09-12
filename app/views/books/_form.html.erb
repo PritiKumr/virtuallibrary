@@ -28,17 +28,12 @@
 
   <div class="field">
     <%= f.label :author %>
-    <%= f.text_area :author %>
+    <%= f.number_field :author %>
   </div>
 
   <div class="field">
     <%= f.label :publication %>
-    <%= f.text_field :publication %>
-  </div>
-
-  <div class="field">
-    <%= f.label :catalogs %>
-    <%= f.file_field :catalogs, multiple: true %>
+    <%= f.number_field :publication %>
   </div>
 
   <div class="actions">

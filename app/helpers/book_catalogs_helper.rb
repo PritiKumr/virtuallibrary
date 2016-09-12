@@ -1,0 +1,2 @@
+module BookCatalogsHelper
+end

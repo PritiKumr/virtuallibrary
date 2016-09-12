@@ -8,11 +8,15 @@ Rails.application.routes.draw do
   root to: 'books#index'
   resources :books do
     resources :carts
+    resources :book_catalogs
   end
   resources :carts do
     resources :orders, except: [:index, :show, :edit]
   end
   resources :orders, only: [:index, :show, :edit]
   resources :plans
+
+  post "/plans/:sub_plan_id/select_plan" => "plans#select_plan", :as => 'select_plan'
+  post "/plans/:sub_plan_id/change_plan" => "plans#change_plan", :as => 'change_plan'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
