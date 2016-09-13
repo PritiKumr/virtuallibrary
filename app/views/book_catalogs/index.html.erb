@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Book Catalogs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Book</th>
+      <th>Catalog</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @book_catalogs.each do |book_catalog| %>
+      <tr>
+        <td><%= book_catalog.book_id %></td>
+        <td><%= book_catalog.catalog %></td>
+        <td><%= link_to 'Show', book_catalog %></td>
+        <td><%= link_to 'Edit', edit_book_catalog_path(book_catalog) %></td>
+        <td><%= link_to 'Destroy', book_catalog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Book Catalog', new_book_book_catalog_path(@book) %>

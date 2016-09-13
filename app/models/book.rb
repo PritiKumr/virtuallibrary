@@ -1,8 +1,7 @@
 class Book < ApplicationRecord
   belongs_to :author
   belongs_to :publication
-
-  # mount_uploaders :catalogs, CatalogUploader
+  has_many :book_catalogs, dependent: :destroy
 
   def author_name
     author.name

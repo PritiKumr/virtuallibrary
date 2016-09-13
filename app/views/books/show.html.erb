@@ -20,5 +20,7 @@
   <%= @book.publication_name %>
 </p>
 
+<%= link_to 'Catalog Images', book_book_catalogs_path(@book) %>
+
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
