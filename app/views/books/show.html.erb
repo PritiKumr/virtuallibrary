@@ -20,7 +20,10 @@
   <%= @book.publication_name %>
 </p>
 
-<%= link_to 'Catalog Images', book_book_catalogs_path(@book) %>
+Enter your pincode to check for delivery.
+<%= form_tag check_pincode_path(@book) do %>
+  <%= number_field_tag :pincode, type: "number" %>
+<% end %>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Catalog Images', book_book_catalogs_path(@book) %>
 <%= link_to 'Back', books_path %>

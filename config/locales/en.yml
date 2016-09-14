@@ -21,3 +21,10 @@
 
 en:
   hello: "Hello world"
+  books:
+    check_pincode:
+      no_delivery: "Sorry! we are not yet operational in your area.
+      But nothing to worry we have made a note about area, we will try our best to
+      be operational in your area asap :) "
+      delieverable: ! "Congrats! it seems your area is %{distance}
+      from our warehouse. It will be delievered in next 1-2 working days. :D"

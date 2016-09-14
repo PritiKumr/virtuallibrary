@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :check_pincode]
 
   # GET /books
   # GET /books.json
@@ -57,6 +57,23 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def check_pincode
+    result = User.delieverable?(params[:pincode])
+    puts "Result: #{result}"
+    respond_to do |format|
+      if !@result
+        distance = User.distance(params[:pincode])
+        format.html {
+          redirect_to @book, notice: t('.delieverable', distance: distance)
+        }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @book, notice: t('.no_delivery') }
+        format.json { head :no_content }
+      end
     end
   end
 
