@@ -5,6 +5,7 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.all
+    @categories = Category.all
   end
 
   # GET /books/1
@@ -62,7 +63,6 @@ class BooksController < ApplicationController
 
   def check_pincode
     result = User.delieverable?(params[:pincode])
-    puts "Result: #{result}"
     respond_to do |format|
       if !@result
         distance = User.distance(params[:pincode])

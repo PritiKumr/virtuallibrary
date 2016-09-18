@@ -1,0 +1,32 @@
+{
+  "name": "virtuallibrary",
+  "version": "1.0.4",
+  "homepage": "",
+  "authors": [
+    "Shilpi Agrawal",
+    "Preethi Kumar"
+  ],
+  "description": "Bower - You beauty",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "Virtual Library"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "components-font-awesome": "^4.6.3",
+    "slick-carousel": "^1.6.0",
+    "nouislider": "^8.5.1",
+    "smartmenus": "^1.0.0"
+  }
+}

@@ -1,4 +1,14 @@
 class DataSeed < ApplicationRecord
+  
+  def self.category
+    Category.create(name: "Fictional")
+    Category.create(name: "Non-Fictional")
+    Category.create(name: "Self-Help")
+    Category.create(name: "Competitive Exams")
+    Category.create(name: "Educational")
+    Category.create(name: "Spritual")
+  end
+
   def self.books
     Author.create(name: "Ashwin Sanghi")
     Publication.create(name: "Red Hot Chillies")

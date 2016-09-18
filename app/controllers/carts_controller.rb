@@ -1,6 +1,8 @@
 class CartsController < ApplicationController
   before_action :check_signin
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  before_action :check_membership, only: [:new, :create, :edit, :update]
+  before_action :check_book_price, only: [:new, :create, :edit, :update]
 
   # GET /carts
   # GET /carts.json
@@ -83,6 +85,20 @@ class CartsController < ApplicationController
 
     def set_cart
       @cart = Cart.find(params[:id])
+    end
+
+    def check_membership
+      respond_to do |format|
+        if current_user.sub_plan.nil?
+          format.html {
+            redirect_to books_url, notice: t('.no_membership')
+            }
+        elsif current_user.membership_expired?
+          format.html {
+            redirect_to books_url, notice: t('.membership_expired')
+          }
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
