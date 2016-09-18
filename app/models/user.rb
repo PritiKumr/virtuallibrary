@@ -3,9 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
   has_many :orders
   has_one :user_info
-  has_one :cart
+  has_many :carts
   has_one :user_plan
   has_one :sub_plan, through: :user_plan
 
@@ -15,7 +16,6 @@ class User < ApplicationRecord
 
   def self.delieverable?(pincode)
     allowed_pincode = YAML::load_file('config/data/pincode.yml')
-    puts "Pincode : #{pincode}"
     allowed_pincode.include?(pincode.to_i)
   end
 
@@ -36,4 +36,25 @@ class User < ApplicationRecord
       return "#{(distance).round*1.61} km away"
     end
   end
+
+  def active_cart_value
+    carts.active.value
+  end
+
+  def active_order_value
+    orders.active.sum(:value)
+  end
+
+  def valid_book_price?
+    max_price_reached? || membership_expired?
+  end
+
+  def max_price_reached?
+    active_order_value >= sub_plan.max_price || active_cart_value >= sub_plan.max_price
+  end
+
+  def membership_expired?
+    sub_plan.expired_date == Date.today?
+  end
+
 end

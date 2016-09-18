@@ -28,3 +28,10 @@ en:
       be operational in your area asap :) "
       delieverable: ! "Congrats! it seems your area is %{distance}
       from our warehouse. It will be delievered in next 1-2 working days. :D"
+  carts:
+    check_membership:
+      no_membership: "Sorry! You still haven't selected the best plans for you."
+      membership_expired: "Sorry! Your membership has been expired lately. But
+      nothing to worry, kindly renew with us, and keep enojoying the book services :)"
+      max_price_reached: "Sorry! It seems that your cart has already reached the
+      maximum price of books, according to your subscribed plan."

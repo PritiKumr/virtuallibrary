@@ -11,6 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap
 //= require jquery_ujs
+//= require nouislider
+//= require slick-carousel
+//= require smartmenus
 //= require turbolinks
 //= require_tree .
