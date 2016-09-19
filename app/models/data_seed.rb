@@ -1,18 +1,173 @@
 class DataSeed < ApplicationRecord
-  
+
   def self.category
-    Category.create(name: "Fictional")
-    Category.create(name: "Non-Fictional")
-    Category.create(name: "Self-Help")
-    Category.create(name: "Competitive Exams")
-    Category.create(name: "Educational")
-    Category.create(name: "Spritual")
+    categories = [
+      "fictional",
+      "non-fictional",
+      "self-help",
+      "competitive exams",
+      "educational",
+      "spritual"
+    ]
+    categories.each do |category|
+      Category.create(name: category)
+    end
+  end
+
+  def self.authors
+    authors = [
+      "J.K. Rowling",
+      "Sidney Sheldon",
+      "Ashwin Sanghi",
+      "Dan Brown",
+      "Jeffery Archer",
+      "Prem Chand"
+    ]
+    authors.each do |author|
+      Author.create(name: author)
+    end
+  end
+
+  def self.publications
+    publications = [
+      "Bloomsburry",
+      "Scholastic Press"
+    ]
+    publications.each do |publication|
+      Publication.create(name: publication)
+    end
   end
 
   def self.books
-    Author.create(name: "Ashwin Sanghi")
-    Publication.create(name: "Red Hot Chillies")
-    Book.create(sku: "AB123K", name: "The krishna key", price: 120, author_id: 1, publication_id: 1)
+    DataSeed.category
+    DataSeed.authors
+    DataSeed.publications
+
+    fictional = Category.find_by(name: "Fictional").id
+    jk_author_id = Author.find_by(name: "J.K. Rowling").id
+    hp_publication_id = Publication.find_by(name: "Bloomsburry").id
+
+    books = [
+      {
+        name: "Harry Potter and the Philosopher's Stone",
+        price: 899.00,
+        author_id: jk_author_id,
+        publication_id: hp_publication_id,
+        book_infos:{
+          isbn_no: "9566-09-1234-23",
+          edition: Date.parse("01-01-1997"),
+          lang: "en",
+          desc: Jargon.lorem_ipsum
+        }
+      },
+
+      {
+        name: "Harry Potter and the Chamber of Secrets",
+        price: 999.00,
+        author_id: jk_author_id,
+        publication_id: hp_publication_id,
+        book_infos:{
+          isbn_no: "9577-19-1634-23",
+          edition: Date.parse("01-01-1998"),
+          lang: "en",
+          desc: Jargon.lorem_ipsum
+        }
+      },
+
+      {
+        name: "Harry Potter and the Prisoner of Azkaban",
+        price: 999.00,
+        author_id: jk_author_id,
+        publication_id: hp_publication_id,
+        book_infos:{
+          isbn_no: "9977-29-1634-23",
+          edition: Date.parse("01-01-1999"),
+          lang: "en",
+          desc: Jargon.lorem_ipsum
+        }
+      },
+
+      {
+        name: "Harry Potter and the Goblet of Fire",
+        price: 1099.00,
+        author_id: jk_author_id,
+        publication_id: hp_publication_id,
+        book_infos:{
+          isbn_no: "9977-29-1634-13",
+          edition: Date.parse("01-01-1999"),
+          lang: "en",
+          desc: Jargon.lorem_ipsum
+        }
+      },
+
+      {
+        name: "Harry Potter and the Order of the Phoenix",
+        price: 1199.00,
+        author_id: jk_author_id,
+        publication_id: hp_publication_id,
+        book_infos:{
+          isbn_no: "9977-31-1634-13",
+          edition: Date.parse("01-01-2003"),
+          lang: "en",
+          desc: Jargon.lorem_ipsum
+        }
+      },
+
+      {
+        name: "Harry Potter and the Order of the Phoenix",
+        price: 1199.00,
+        author_id: jk_author_id,
+        publication_id: hp_publication_id,
+        book_infos:{
+          isbn_no: "9977-01-1634-13",
+          edition: Date.parse("01-01-2003"),
+          lang: "en",
+          desc: Jargon.lorem_ipsum
+        }
+      },
+
+      {
+        name: "Harry Potter and the Half-Blood Prince",
+        price: 1299.00,
+        author_id: jk_author_id,
+        publication_id: hp_publication_id,
+        book_infos: {
+          isbn_no: "9977-31-1634-29",
+          edition: Date.parse("01-01-2005"),
+          lang: "en",
+          desc: Jargon.lorem_ipsum
+        }
+      },
+
+      {
+        name: "Harry Potter and the Deathly Hollows",
+        price: 1399.00,
+        author_id: jk_author_id,
+        publication_id: hp_publication_id,
+        book_infos:{
+          isbn_no: "9977-31-1634-39",
+          edition: Date.parse("01-01-2007"),
+          lang: "en",
+          desc: Jargon.lorem_ipsum
+        }
+      }
+    ]
+
+    books.each do |book|
+      b = Book.new
+      b.name = book[:name]
+      b.price = book[:price]
+      b.author_id = book[:author_id]
+      b.publication_id = book[:publication_id]
+      b.save!
+      b.create_book_info(
+        isbn_no: book[:book_infos][:isbn_no],
+        edition: book[:book_infos][:edition],
+        lang: book[:book_infos][:lang],
+        desc: book[:book_infos][:desc]
+      )
+      b.create_book_category(category_id: fictional)
+    end
   end
 
   def self.plans

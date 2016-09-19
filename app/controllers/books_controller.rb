@@ -1,9 +1,18 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy, :check_pincode]
 
+  def home
+    @books = Book.all
+    @categories = Category.all
+  end
+
   # GET /books
   # GET /books.json
   def index
+    # if params[:category]
+    #   @category = Category.find_by(name: params[:category])
+    #   @books = @category.books
+    # end
     @books = Book.all
     @categories = Category.all
   end

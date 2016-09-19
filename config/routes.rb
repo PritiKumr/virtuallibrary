@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :plans
   devise_for :users
-  root to: 'books#index'
+  root to: 'books#home'
   resources :books do
     resources :carts
     resources :book_catalogs
@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   # get "/books/:book_id/book_catalogs/new" => "book_catalogs#new", :as => 'new_book_catalog'
   # post "/books/:book_id/book_catalogs" =>	"book_catalogs#create", :as => 'create_book_catalog'
   post "/books/:id/check_pincode" => "books#check_pincode", :as => 'check_pincode'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get  "/" => "books#home", :as => 'home'
+
 end

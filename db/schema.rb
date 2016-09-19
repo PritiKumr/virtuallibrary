@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915081857) do
+ActiveRecord::Schema.define(version: 20160919070958) do
 
   create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20160915081857) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "book_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "isbn_no"
+    t.date     "edition"
+    t.text     "desc",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "lang"
+    t.integer  "book_id"
+  end
+
   create_table "book_stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "book_id"
     t.boolean  "available"
@@ -43,12 +53,11 @@ ActiveRecord::Schema.define(version: 20160915081857) do
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "sku"
     t.string   "name"
-    t.text     "price",          limit: 65535
+    t.float    "price",          limit: 24
     t.integer  "author_id"
     t.integer  "publication_id"
-    t.text     "book_specs",     limit: 65535
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "cart_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
