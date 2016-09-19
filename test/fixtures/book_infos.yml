@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  isbn_no: MyString
+  edition: 2016-09-19
+  desc: MyText
+
+two:
+  isbn_no: MyString
+  edition: 2016-09-19
+  desc: MyText
