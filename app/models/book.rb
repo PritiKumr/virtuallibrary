@@ -13,4 +13,8 @@ class Book < ApplicationRecord
   def publication_name
     publication.name
   end
+
+  def front_image
+    book_catalogs.first.catalog.url if book_catalogs.present?
+  end
 end

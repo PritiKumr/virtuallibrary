@@ -42,7 +42,7 @@
                 <div class="col-md-5 no-padding">
                   <div class="aa-promo-left">
                     <div class="aa-promo-banner">
-                      <img src="img/promo-banner-1.jpg" alt="img">
+                      <img src="fictional_45.png" alt="fictional books">
                       <div class="aa-prom-content">
                         <h4><%= link_to @categories.first.name, books_url %></a></h4>
                       </div>
@@ -55,7 +55,8 @@
                     <% @categories[1..4].each do |category| %>
                       <div class="aa-single-promo-right">
                         <div class="aa-promo-banner">
-                          <img src="img/promo-banner-3.jpg" alt="img">
+                          <% @filename = "#{category.name}.jpg" %>
+                          <%= image_tag(@filename, alt: "#{category.name} books") %>
                           <div class="aa-prom-content">
                             <h4>
                               <%= link_to category.name, books_url(category: category.name), { 'data-toggle': "tab"} %>
@@ -104,7 +105,9 @@
                             <% @books.each do |book| %>
                               <li>
                                 <figure>
-                                  <a class="aa-product-img" href="#"><img src="img/man/polo-shirt-2.png" alt="polo shirt img"></a>
+                                  <a class="aa-product-img" href="#">
+                                    <%= image_tag(book.front_image, alt: "polo shirt img") %>
+                                  </a>
                                   <%= link_to book_carts_path(book), class: "aa-add-card-btn", method: :post do %>
                                     <span class="fa fa-shopping-cart"></span> Add To Library
                                   <% end %>

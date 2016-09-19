@@ -22,3 +22,4 @@
 
 # Ignore assets folders
 /vendor/assets/components/*
+/public/uploads/*
