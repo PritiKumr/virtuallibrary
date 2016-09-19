@@ -114,19 +114,6 @@ class DataSeed < ApplicationRecord
       },
 
       {
-        name: "Harry Potter and the Order of the Phoenix",
-        price: 1199.00,
-        author_id: jk_author_id,
-        publication_id: hp_publication_id,
-        book_infos:{
-          isbn_no: "9977-01-1634-13",
-          edition: Date.parse("01-01-2003"),
-          lang: "en",
-          desc: Jargon.lorem_ipsum
-        }
-      },
-
-      {
         name: "Harry Potter and the Half-Blood Prince",
         price: 1299.00,
         author_id: jk_author_id,
@@ -304,4 +291,17 @@ class DataSeed < ApplicationRecord
       max_price: 10000.00
     )
   end
+
+  def self.book_images
+      i = 1
+    Book.all.each do |b|
+      bc = BookCatalog.new
+      f = File.open("/home/minions/Documents/Virtual Library Images/hp#{i}.jpg")
+      bc.catalog = f
+      bc.book_id = b.id
+      bc.save!
+      i = i+1
+    end
+  end
+
 end
