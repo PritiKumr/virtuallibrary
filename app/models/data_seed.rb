@@ -166,6 +166,7 @@ class DataSeed < ApplicationRecord
         lang: book[:book_infos][:lang],
         desc: book[:book_infos][:desc]
       )
+      b.create_book_category(category_id: fictional)
     end
   end
 
