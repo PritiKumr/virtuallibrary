@@ -32,7 +32,7 @@
             image_container.html(loading_image);
 
             var a = $('<a>').attr('data-lens-image', lens_image).addClass(opts.parent_anchor_class);
-            var img = $('<img>').load(function(){
+            var img = $('<img>').on('load', function(){
                 img.appendTo(a);
                 image_container.html(a);
             }).attr('src', src).addClass(opts.big_image_class);

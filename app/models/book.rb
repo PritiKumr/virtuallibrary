@@ -6,6 +6,8 @@ class Book < ApplicationRecord
   has_one :category, through: :book_category
   has_one :book_info, dependent: :destroy
 
+  # scope -> :featured, where('.featured = ?', 1).limit(4)
+
   def author_name
     author.name
   end
