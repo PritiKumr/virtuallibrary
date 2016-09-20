@@ -7,7 +7,13 @@
           <!-- start header top left -->
           <div class="aa-header-top-left">
             <div class="cellphone hidden-xs">
-              <p><span class="fa fa-phone"></span>00-62-658-658</p>
+              <p><span class="fa fa-phone tealincolor"></span>+91 819007 1086</p>
+            </div>
+            <div class="cellphone hidden-xs">
+              <p>
+                <span class="fa fa-envelope tealincolor"></span>
+                support@virtuallib.com
+              </p>
             </div>
             <!-- / cellphone -->
           </div>
@@ -29,7 +35,11 @@
                   <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
                 </li>
               <% else %>
-                <li><%= link_to 'Login', new_user_session_path %></li>
+                <li>
+                  <%= link_to new_user_session_path, class:"fa fa-sign-in" do %>
+                      <span class="link_to_font">Log In</span>
+                  <% end %>                
+                </li>
               <% end %>
             </ul>
           </div>

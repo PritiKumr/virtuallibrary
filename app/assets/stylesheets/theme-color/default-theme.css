@@ -8,6 +8,11 @@ Author URI : http://www.markups.io/
 h2 {
   color: #008080;
 }
+
+.tealincolor {
+  color: teal;
+}
+
 .aa-primary-btn:hover, .aa-primary-btn:focus {
   color: #008080;
   border-color: #008080;
