@@ -38,7 +38,7 @@
 /* BASE - Base tyles, Variables, Mixins, etc. */
 body {
   background-color: #ffffff;
-  font-family: "Lato", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #333333;
   font-size: 16px;
   overflow-x: hidden;
@@ -48,6 +48,9 @@ body {
   padding: 0;
 }
 
+.link_to_font{
+  font-family: 'Roboto', sans-serif;
+}
 /* MODULES - Individual site components */
 ul {
   padding: 0;
@@ -67,7 +70,7 @@ a:focus {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 h2 {
@@ -358,9 +361,9 @@ img {
 #aa-header .aa-header-top .aa-header-top-right .aa-head-top-nav-right li a {
   display: inline-block;
   color: #333333;
-  border-right: 1px solid #ddd;
+  /*border-right: 1px solid #ddd;*/
   font-size: 14px;
-  padding: 5px 8px;
+  /*padding: 5px 8px;*/
 }
 #aa-header .aa-header-bottom {
   float: left;
@@ -378,7 +381,7 @@ img {
   margin-top: 4px;
 }
 #aa-header .aa-header-bottom .aa-header-bottom-area .aa-logo a {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 28px;
 }
 #aa-header .aa-header-bottom .aa-header-bottom-area .aa-logo a:hover {
@@ -416,7 +419,7 @@ img {
   border: 1px solid #ddd;
   color: #555;
   font-size: 14px;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Roboto', sans-serif;
   height: 40px;
   padding: 10px 55px 10px 10px;
   width: 100%;
@@ -598,7 +601,7 @@ img {
   float: left;
   font-weight: bold;
   font-size: 16px;
-  font-family: "Lato", sans-serif;
+  font-family: 'Roboto', sans-serif;
   letter-spacing: 0.5px;
 }
 #aa-header .aa-header-bottom .aa-cartbox .aa-cartbox-summary ul li .aa-cartbox-total-price {
@@ -834,7 +837,7 @@ img {
   display: inline-block;
   float: none;
   font-size: 50px;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
   margin-top: 20px;
   text-align: center;
@@ -1414,7 +1417,7 @@ img {
 }
 #aa-support .aa-support-area .aa-support-single h4 {
   color: #fff;
-  font-family: "Lato", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
   letter-spacing: 0.5px;
 }
