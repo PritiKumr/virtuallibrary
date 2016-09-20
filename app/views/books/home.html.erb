@@ -84,64 +84,222 @@
                 <div class="aa-product-inner">
                   <!-- start prduct navigation -->
                    <ul class="nav nav-tabs aa-products-tab">
-                      <li class="active">
-                        <a href="#fictional" data-toggle="tab">Fiction</a>
-                      </li>
-                      <% @categories[1..5].each do |category| %>
-                        <li>
-                          <a href="##{category.name}" data-toggle="tab">
-                            <%= category.name.capitalize %>
-                          </a>
-                        </li>
-                      <% end %>
-                    </ul>
-                    <!-- Tab panes -->
+                     <% if @categories[0].present? %>
+                      <li class="active"><a href="#fictional" data-toggle="tab">Fictional</a></li>
+                     <% end %>
+                     <% if @categories[1].books.present? %>
+                      <li><a href="#non-fictional" data-toggle="tab">Non-Fictional</a></li>
+                     <% end %>
+                     <% if @categories[2].books.present? %>
+                      <li><a href="#self-help" data-toggle="tab">Self-Help</a></li>
+                     <% end %>
+                     <% if @categories[3].books.present? %>
+                      <li><a href="#competition-exams" data-toggle="tab">Competition Exams</a></li>
+                     <% end %>
+                     <% if @categories[4].books.present? %>
+                      <li><a href="#educational" data-toggle="tab">Educational</a></li>
+                     <% end %>
+                     <% if @categories[5].books.present? %>
+                      <li><a href="#spiritual" data-toggle="tab">Spiritual</a></li>
+                     <% end %>
+                   </ul>
+                   <!-- Tab panes -->
                     <div class="tab-content">
-                      <% @categories.each do |category| %>
-                        <div class="tab-pane fade in active" id='<% category.name %>' >
-                          <ul class="aa-product-catg">
-                            <!-- start single product item -->
-                            <% @books = category.books.limit(7) %>
-                            <% @books.each do |book| %>
-                              <li>
-                                <figure>
-                                  <a class="aa-product-img" href="#">
-                                    <%= image_tag(book.front_image, alt: "polo shirt img") %>
-                                  </a>
-                                  <%= link_to book_carts_path(book), class: "aa-add-card-btn", method: :post do %>
-                                    <span class="fa fa-shopping-cart"></span> Add To Library
-                                  <% end %>
+                     <!-- Start fictional book category -->
+                      <div class="tab-pane fade in active" id="fictional">
+                        <ul class="aa-product-catg">
+                          <% @categories.first.books.limit(4).each do |book| %>
+                            <li>
+                              <figure>
+                                <a class="aa-product-img" href="#">
+                                  <%= image_tag(book.front_image, alt: "#{book.name} image") %>
+                                </a>
+                                <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Library</a>
                                   <figcaption>
-                                    <h4 class="aa-product-title">
-                                      <%= link_to book.name, book %>
-                                    </h4>
-                                    <span class="aa-product-price">
-                                      ₹<%= book.price %>
-                                    </span>
-                                  </figcaption>
-                                </figure>
-                                <div class="aa-product-hvr-content">
-                                  <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
-                                  <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
-                                </div>
-                                <!-- product badge -->
-                                <!-- <span class="aa-badge aa-sale" href="#">SALE!</span> -->
-                              </li>
-                            <% end %>
+                                  <h4 class="aa-product-title">
+                                    <%= link_to book.name, book %>
+                                  </h4>
+                                  <span class="aa-product-price">
+                                    ₹<%= book.price %>
+                                  </span>
+                                </figcaption>
+                              </figure>
+                              <div class="aa-product-hvr-content">
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Bookmark"><span class="fa fa-heart-o"></span></a>
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
+                              </div>
+                            </li>
                           <% end %>
-                        </div>
+                        </ul>
+                      </div>
+                      <div class="tab-pane fade" id="non-fictional">
+                        <ul class="aa-product-catg">
+                          <% @categories.second.books.limit(4).each do |book| %>
+                            <li>
+                              <figure>
+                                <a class="aa-product-img" href="#">
+                                  <%= image_tag(book.front_image, alt: "#{book.name} image") %>
+                                </a>
+                                <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Library</a>
+                                <figcaption>
+                                  <h4 class="aa-product-title">
+                                    <%= link_to book.name, book %>
+                                  </h4>
+                                  <span class="aa-product-price">
+                                    ₹<%= book.price %>
+                                  </span>
+                                </figcaption>
+                              </figure>
+                              <div class="aa-product-hvr-content">
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Bookmark"><span class="fa fa-heart-o"></span></a>
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
+                              </div>
+                            </li>
+                          <% end %>
+                        </ul>
+                      </div>
+                      <div class="tab-pane fade" id="self-help">
+                        <ul class="aa-product-catg">
+                          <% @categories.third.books.limit(4).each do |book| %>
+                            <li>
+                              <figure>
+                                <a class="aa-product-img" href="#">
+                                  <%= image_tag(book.front_image, alt: "#{book.name} image") %>
+                                </a>
+                                <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Library</a>
+                                <figcaption>
+                                  <h4 class="aa-product-title">
+                                    <%= link_to book.name, book %>
+                                  </h4>
+                                  <span class="aa-product-price">
+                                    ₹<%= book.price %>
+                                  </span>
+                                </figcaption>
+                              </figure>
+                              <div class="aa-product-hvr-content">
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Bookmark"><span class="fa fa-heart-o"></span></a>
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
+                              </div>
+                            </li>
+                          <% end %>
+                        </ul>
+                      </div>
+                      <div class="tab-pane fade" id="competition-exams">
+                        <ul class="aa-product-catg">
+                          <% @categories.fourth.books.limit(4).each do |book| %>
+                            <li>
+                              <figure>
+                                <a class="aa-product-img" href="#">
+                                  <%= image_tag(book.front_image, alt: "#{book.name} image") %>
+                                </a>
+                                <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Library</a>
+                                <figcaption>
+                                  <h4 class="aa-product-title">
+                                    <%= link_to book.name, book %>
+                                  </h4>
+                                  <span class="aa-product-price">
+                                    ₹<%= book.price %>
+                                  </span>
+                                </figcaption>
+                              </figure>
+                              <div class="aa-product-hvr-content">
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Bookmark"><span class="fa fa-heart-o"></span></a>
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
+                              </div>
+                            </li>
+                          <% end %>
+                        </ul>
+                      </div>
+                      <div class="tab-pane fade" id="competition-exams">
+                        <ul class="aa-product-catg">
+                          <% @categories.fourth.books.limit(4).each do |book| %>
+                            <li>
+                              <figure>
+                                <a class="aa-product-img" href="#">
+                                  <%= image_tag(book.front_image, alt: "#{book.name} image") %>
+                                </a>
+                                <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Library</a>
+                                <figcaption>
+                                  <h4 class="aa-product-title">
+                                    <%= link_to book.name, book %>
+                                  </h4>
+                                  <span class="aa-product-price">
+                                    ₹<%= book.price %>
+                                  </span>
+                                </figcaption>
+                              </figure>
+                              <div class="aa-product-hvr-content">
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Bookmark"><span class="fa fa-heart-o"></span></a>
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
+                              </div>
+                            </li>
+                          <% end %>
+                        </ul>
+                      </div>
+                      <div class="tab-pane fade" id="educational">
+                        <ul class="aa-product-catg">
+                          <% @categories[5].books.limit(4).each do |book| %>
+                            <li>
+                              <figure>
+                                <a class="aa-product-img" href="#">
+                                  <%= image_tag(book.front_image, alt: "#{book.name} image") %>
+                                </a>
+                                <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Library</a>
+                                <figcaption>
+                                  <h4 class="aa-product-title">
+                                    <%= link_to book.name, book %>
+                                  </h4>
+                                  <span class="aa-product-price">
+                                    ₹<%= book.price %>
+                                  </span>
+                                </figcaption>
+                              </figure>
+                              <div class="aa-product-hvr-content">
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Bookmark"><span class="fa fa-heart-o"></span></a>
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
+                              </div>
+                            </li>
+                          <% end %>
+                        </ul>
+                      </div>
+                      <div class="tab-pane fade" id="spiritual">
+                        <ul class="aa-product-catg">
+                          <% @categories[5].books.limit(4).each do |book| %>
+                            <li>
+                              <figure>
+                                <a class="aa-product-img" href="#">
+                                  <%= image_tag(book.front_image, alt: "#{book.name} image") %>
+                                </a>
+                                <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Library</a>
+                                <figcaption>
+                                  <h4 class="aa-product-title">
+                                    <%= link_to book.name, book %>
+                                  </h4>
+                                  <span class="aa-product-price">
+                                    ₹<%= book.price %>
+                                  </span>
+                                </figcaption>
+                              </figure>
+                              <div class="aa-product-hvr-content">
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Bookmark"><span class="fa fa-heart-o"></span></a>
+                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
+                              </div>
+                            </li>
+                          <% end %>
+                        </ul>
                       </div>
                     </div>
+                    <%= link_to books_url, class: "aa-browse-btn" do %>
+                      Browse all Product
+                      <span class="fa fa-long-arrow-right"></span>
+                    <% end %>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <%= link_to books_url, class: "aa-browse-btn" do %>
-              Browse all Product
-              <span class="fa fa-long-arrow-right"></span>
-          <% end %>
-        </section>
+        </div>
+    </section>
     <!-- end of product section -->
     <!-- popular section -->
     <section id="aa-popular-category">
@@ -161,24 +319,7 @@
                   <!-- Start men popular category -->
                   <div class="tab-pane fade in active" id="popular">
                     <ul class="aa-product-catg aa-popular-slider">
-                      <!-- start single product item -->
-                      <li>
-                        <figure>
-                          <a class="aa-product-img" href="#"><img src="img/man/polo-shirt-2.png" alt="polo shirt img"></a>
-                          <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                           <figcaption>
-                            <h4 class="aa-product-title"><a href="#">Polo T-Shirt</a></h4>
-                            <span class="aa-product-price">$45.50</span><span class="aa-product-price"><del>$65.50</del></span>
-                          </figcaption>
-                        </figure>
-                        <div class="aa-product-hvr-content">
-                          <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
-                          <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-                          <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
-                        </div>
-                        <!-- product badge -->
-                        <span class="aa-badge aa-sale" href="#">SALE!</span>
-                      </li>
+
                     </ul>
                     <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
                   </div>
@@ -190,7 +331,7 @@
                       <!-- start single product item -->
                       <li>
                         <figure>
-                          <a class="aa-product-img" href="#"><img src="img/man/polo-shirt-2.png" alt="polo shirt img"></a>
+                          <a class="aa-product-img" href="#"><img src="" alt="polo shirt img"></a>
                           <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                            <figcaption>
                             <h4 class="aa-product-title"><a href="#">Polo T-Shirt</a></h4>
@@ -216,7 +357,7 @@
                       <!-- start single product item -->
                       <li>
                         <figure>
-                          <a class="aa-product-img" href="#"><img src="img/man/polo-shirt-2.png" alt="polo shirt img"></a>
+                          <a class="aa-product-img" href="#"><img src="" alt="polo shirt img"></a>
                           <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                            <figcaption>
                             <h4 class="aa-product-title"><a href="#">Polo T-Shirt</a></h4>
@@ -280,59 +421,6 @@
       </div>
     </section>
     <!-- / Support section -->
-    <!-- Testimonial -->
-    <section id="aa-testimonial">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="aa-testimonial-area">
-              <ul class="aa-testimonial-slider">
-                <!-- single slide -->
-                <li>
-                  <div class="aa-testimonial-single">
-                  <img class="aa-testimonial-img" src="img/testimonial-img-2.jpg" alt="testimonial img">
-                    <span class="fa fa-quote-left aa-testimonial-quote"></span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt distinctio omnis possimus, facere, quidem qui!consectetur adipisicing elit. Sunt distinctio omnis possimus, facere, quidem qui.</p>
-                    <div class="aa-testimonial-info">
-                      <p>Allison</p>
-                      <span>Designer</span>
-                      <a href="#">Dribble.com</a>
-                    </div>
-                  </div>
-                </li>
-                <!-- single slide -->
-                <li>
-                  <div class="aa-testimonial-single">
-                  <img class="aa-testimonial-img" src="img/testimonial-img-1.jpg" alt="testimonial img">
-                    <span class="fa fa-quote-left aa-testimonial-quote"></span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt distinctio omnis possimus, facere, quidem qui!consectetur adipisicing elit. Sunt distinctio omnis possimus, facere, quidem qui.</p>
-                    <div class="aa-testimonial-info">
-                      <p>KEVIN MEYER</p>
-                      <span>CEO</span>
-                      <a href="#">Alphabet</a>
-                    </div>
-                  </div>
-                </li>
-                 <!-- single slide -->
-                <li>
-                  <div class="aa-testimonial-single">
-                  <img class="aa-testimonial-img" src="img/testimonial-img-3.jpg" alt="testimonial img">
-                    <span class="fa fa-quote-left aa-testimonial-quote"></span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt distinctio omnis possimus, facere, quidem qui!consectetur adipisicing elit. Sunt distinctio omnis possimus, facere, quidem qui.</p>
-                    <div class="aa-testimonial-info">
-                      <p>Luner</p>
-                      <span>COO</span>
-                      <a href="#">Kinatic Solution</a>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- / Testimonial -->
 
     <!-- Start of Subscribe Section -->
       <%= render 'shared/subscribe' %>
@@ -343,31 +431,3 @@
 
 
   <p id="notice"><%= notice %></p>
-
-        <h1>Books</h1>
-
-        <table>
-            <tr>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Author</th>
-              <th>Publication</th>
-              <th>Images</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @books.each do |book| %>
-              <tr>
-                <td><%= book.name %></td>
-                <td><%= book.price %></td>
-                <td><%= book.author_name %></td>
-                <td><%= book.publication_name %></td>
-                <td><%= link_to 'Show', book %></td>
-                <td><%= link_to 'Rent Now', book_carts_path(book), method: :post %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <br>
