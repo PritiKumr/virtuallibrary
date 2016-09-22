@@ -57,4 +57,16 @@ class User < ApplicationRecord
     sub_plan.expired_date == Date.today?
   end
 
+  def name
+    "#{user_info.first_name} #{user_info.last_name}"
+  end
+
+  def address
+    "#{user_info.address1}, #{user_info.address2}, #{user_info.pincode}, #{user_info.city}"
+  end
+
+  def avatar
+    user_info.avatar.url
+  end
+
 end

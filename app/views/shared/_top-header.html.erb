@@ -19,29 +19,47 @@
           </div>
           <!-- / header top left -->
           <div class="aa-header-top-right">
-            <ul class="aa-head-top-nav-right">
-              <% if user_signed_in? %>
-                <li class="hidden-xs">Hi <span> <%= current_user.email %> </span>
+            <% if user_signed_in? %>
+              <ul class="aa-head-top-nav-right-signed-in">
                 <% @user_info = current_user.user_info %>
                 <% if @user_info.present? %>
-                  <li><%= link_to 'My Avatar', user_info_path(@user_info) %></li>
+                  <li class="hidden-xs">
+                    <%= link_to user_info_path(@user_info), "data-toggle": "tooltip", "data-placement":"bottom", title: 'My Avatar' do %>
+                      Hi <span> <%= current_user.email %>! </span><i class="fa fa-user tealincolor"></i>
+                    <% end %>
+                  </li>
                 <% else %>
-                  <li><%= link_to 'My Avatar', new_user_info_path %></li>
+                  <li>
+                    <%= link_to new_user_info_path, "data-toggle": "tooltip", "data-placement":"bottom", title: 'My Avatar' do %>
+                      Hi <span> <%= current_user.email %>! </span><i class="fa fa-user tealincolor"></i>
+                    <% end %>
+                  </li>
                 <% end %>
-                <li class="hidden-xs"><% link_to 'My Wishlist', "#" %></li>
-                <li class="hidden-xs"><%= link_to 'My Cart', carts_path %></li>
-                <li class="hidden-xs"><%= link_to 'Checkout', orders_path %></li>
                 <li class="hidden-xs">
-                  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+                  <%= link_to "#", "data-toggle": "tooltip", "data-placement":"bottom", title: 'My Bookmarks' do %>
+                    <i class="fa fa-bookmark tealincolor medium-size-icons"></i>
+                  <% end %>
                 </li>
-              <% else %>
+                <li class="hidden-xs">
+                  <%= link_to carts_path, "data-toggle": "tooltip", "data-placement":"bottom", title: 'My Library' do %>
+                    <i class="fa fa-book tealincolor medium-size-icons"></i>
+                  <% end %>
+                </li>
+                <li class="hidden-xs">
+                  <%= link_to destroy_user_session_path, "data-toggle": "tooltip", "data-placement":"bottom", title: 'Sign Out', method: :delete  do %>
+                    <i class="fa fa-sign-out tealincolor medium-size-icons"></i>
+                  <% end %>
+                </li>
+              </ul>
+            <% else %>
+              <ul class="aa-head-top-nav-right">
                 <li>
                   <%= link_to new_user_session_path, class:"fa fa-sign-in" do %>
                       <span class="link_to_font">Log In</span>
-                  <% end %>                
+                  <% end %>
                 </li>
-              <% end %>
-            </ul>
+              </ul>
+            <% end %>
           </div>
         </div>
       </div>

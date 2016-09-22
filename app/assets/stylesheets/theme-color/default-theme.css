@@ -13,6 +13,11 @@ h2 {
   color: teal;
 }
 
+.medium-size-icons{
+  size: 20px;
+}
+
+
 .aa-primary-btn:hover, .aa-primary-btn:focus {
   color: #008080;
   border-color: #008080;

@@ -355,5 +355,16 @@ jQuery(function($){
         // instead of a settings object
       ]
     });
+    $(document).ready(function(){
+        $('.log-btn').click(function(){
+            $('.log-status').addClass('wrong-entry');
+           $('.login-alert').fadeIn(500);
+           setTimeout( "$('.alert').fadeOut(1500);",3000 );
+        });
+        $('.login-form-control').keypress(function(){
+            $('.log-status').removeClass('wrong-entry');
+        });
+
+    });
 
 });

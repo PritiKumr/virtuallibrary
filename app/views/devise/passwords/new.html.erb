@@ -1,16 +1,108 @@
-<h2>Forgot your password?</h2>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Book Store | Home</title>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'> -->
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+  </head>
+  <body>
+   <!-- wpf loader Two -->
+    <!-- <div id="wpf-loader-two">
+      <div class="wpf-loader-two-inner">
+        <span>Loading</span>
+      </div>
+    </div> -->
+    <!-- / wpf loader Two -->
+  <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start header section -->
+    <%= render 'shared/header' %>
+  <!-- End of header section -->
+  <!-- Start of menu section -->
+    <%= render 'shared/menu' %>
+  <!-- End of menu section -->
+    <section id="aa-myaccount">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+           <div class="aa-myaccount-area">
+             <div class="aa-myaccount-login">
+               <h4>Reset your password</h4>
+               <div class="aa-login-form">
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                  <%= devise_error_messages! %>
+                  <label for="">Email<span>*</span></label>
+                  <%= f.text_field :email, autofocus: true, placeholder: "Email" %>
+                  <%= f.submit "Send me reset password instructions", class:"aa-browse-btn forgotpwd" %>
+                <% end %>
+                <div class="signup">
+                  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+                    Don't have an account ?
+                    <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+                  <% end -%>
+                </div>
+                <div class="aa-lost-password">
+                  <%- if controller_name != 'sessions' %>
+                    Already a memeber ?
+                    <%= link_to "Log in", new_session_path(resource_name) %><br />
+                  <% end -%>
+                </div>
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <%= render 'shared/support' %>
+    <%= render 'shared/subscribe' %>
+    <%= render 'shared/footer' %>
+  </body>
+</html>
 
-<%= render "devise/shared/links" %>
+     <h1 class="login-h1">Virtual Library</h1>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="login-form-group">
+          <span class="fa fa-user tealincolor"></span>
+          <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "login-form-control" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Send me reset password instructions", class:"aa-browse-btn forgotpwd" %>
+        </div>
+      <% end %>
+      <div class="signup">
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+          Don't have an account ?
+          <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+        <% end -%>
+      </div>
+      <div class="signin">
+        <%- if controller_name != 'sessions' %>
+          Already a memeber ?
+          <%= link_to "Log in", new_session_path(resource_name) %><br />
+        <% end -%>
+      </div>
+    </div>
+    <%= render 'shared/support' %>
+    <%= render 'shared/subscribe' %>
+    <%= render 'shared/footer' %>
+  </body>
+</html>
