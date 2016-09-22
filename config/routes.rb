@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :subscribers, only: [:create, :new]
   resources :user_infos
   resources :publications
   resources :authors
