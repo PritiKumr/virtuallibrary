@@ -1,45 +1,73 @@
-<%= form_for(user_info) do |f| %>
-  <% if user_info.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user_info.errors.count, "error") %> prohibited this user_info from being saved:</h2>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Book Store | Home</title>
 
-      <ul>
-      <% user_info.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'> -->
 
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
+  </head>
+  <body>
+    <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+    <!-- END SCROLL TOP BUTTON -->
+    <!-- Start header section -->
+    <%= render 'shared/header' %>
+    <!-- End of header section -->
+    <!-- Start of menu section -->
+    <%= render 'shared/menu' %>
+    <!-- End of menu section -->
+    <section id="aa-myaccount">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+           <div class="aa-myaccount-area">
+             <div class="aa-myaccount-register">
+              <h4>Personal Info</h4>
+              <div class="aa-login-form">
+                <%= form_for(user_info) do |f| %>
+                    <label> Upload your avatar </label>
+                    <%= f.file_field :avatar, class: 'aa-browse-btn' %>
+                    <%= f.label :first_name %>
+                    <%= f.text_field :first_name %>
+                    <%= f.label :last_name %>
+                    <%= f.text_field :last_name %>
+                    <%= f.label :address1 %>
+                    <%= f.text_field :address1, class:"aa-myaccount-textarea" %>
+                    <%= f.label :address2 %>
+                    <%= f.text_field :address2 %>
+                    <%= f.label :contact_no %>
+                    <%= f.number_field :contact_no %>
+                    <%= f.label :pincode %>
+                    <%= f.number_field :pincode %>
+                    <%= f.label :city %>
+                    <%= f.text_field :city %>
+                    <%= f.label :gender %></br>
+                    <%= label :female, 'Female' %>
+                    <%= f.radio_button :gender, 'female', :checked => true %>
+                    <%= label :male, 'Male' %>
+                    <%= f.radio_button :gender, 'male' %></br>
+                    <%= f.submit 'Save Changes', class:"aa-browse-btn" %>
+                    <span><%= link_to 'Show', @user_info, class: "aa-browse-btn" %></span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_area :address %>
-  </div>
 
-  <div class="field">
-    <%= f.label :contact_no %>
-    <%= f.number_field :contact_no %>
-  </div>
-
-  <div class="field">
-    <%= f.label :gender %>
-    <%= label :female, 'Female' %>
-    <%= f.radio_button :gender, 'female', :checked => true %>
-    <%= label :male, 'Male' %>
-    <%= f.radio_button :gender, 'male' %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  </body>

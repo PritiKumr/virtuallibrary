@@ -1,47 +1,36 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Book Store | Home</title>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user_info.first_name %>
-</p>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user_info.last_name %>
-</p>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'> -->
 
-<p>
-  <strong>Address:</strong>
-  <%= @user_info.address %>
-</p>
-
-<p>
-  <strong>Contact no:</strong>
-  <%= @user_info.contact_no %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @user_info.gender %>
-</p>
-
-<p>
-  <strong>Plan:</strong>
-  <% @plan = current_user.sub_plan %>
-  <% if @plan.present? %>
-  You have membership of
-    <%= @plan.plan.name %>
-    <!-- TODO Make SubPlan as scaffold instead of just a model. -->
-    <%= @plan.name %> Pack <%= link_to 'Change Plan', plans_url %>
-<% else %>
-  Buy best plans for you <%= link_to 'here', plans_url %>.
-<% end %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @user_info.user_status %>
-</p>
-
-<%= link_to 'Edit', edit_user_info_path(@user_info) %> |
-<%= link_to 'Back', root_path %>
+  </head>
+  <body>
+    <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+    <!-- END SCROLL TOP BUTTON -->
+    <!-- Start header section -->
+    <%= render 'shared/header' %>
+    <!-- End of header section -->
+    <!-- Start of menu section -->
+    <%= render 'shared/menu' %>
+    <!-- End of menu section -->
+    <section id="aa-myprofile">
+      <div class="aa-myprofile-area">
+        <%= image_tag(current_user.avatar, alt: 'Your profile picture') %>
+      </div>
+    </section>
