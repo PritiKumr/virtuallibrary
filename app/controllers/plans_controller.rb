@@ -1,5 +1,6 @@
 class PlansController < ApplicationController
   before_action :set_plan, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /plans
   # GET /plans.json
@@ -69,13 +70,13 @@ class PlansController < ApplicationController
     end
   end
 
-  def change_plan
-    current_user.user_plan.update(sub_plan_id: params[:sub_plan_id])
-    respond_to do |format|
-      format.html { redirect_to user_info_path(current_user.user_info), notice: 'You have successfully selected the best plan for yourself.' }
-      format.json { head :no_content }
-    end
-  end
+  # def change_plan
+  #   current_user.user_plan.update(sub_plan_id: params[:sub_plan_id])
+  #   respond_to do |format|
+  #     format.html { redirect_to user_info_path(current_user.user_info), notice: 'You have successfully selected the best plan for yourself.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
