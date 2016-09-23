@@ -133,6 +133,15 @@ h2 {
 .aa-product-catg li .aa-product-hvr-content a:hover, .aa-product-catg li .aa-product-hvr-content a:focus {
   color: #008080;
 }
+.aa-plans-tab li a:hover, .aa-plans-tab li a:focus {
+  border-bottom: 1px solid #008080;
+}
+.aa-plans-tab li.active a {
+  border-bottom: 1px solid #008080 !important;
+}
+.aa-plans-tab li.active a:hover, .aa-plans-tab li.active a:focus {
+  border-bottom: 1px solid #008080;
+}
 #quick-view-modal .modal-content button.close:hover {
   color: #008080;
 }
