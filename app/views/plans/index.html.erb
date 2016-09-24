@@ -51,8 +51,10 @@
                     <div class="tab-pane fade in active" id="limited">
                       <% @plans.each do |plan| %>
                         <div class ="row">
-                          <div class="col-md-12 text-center">
-                            <h3><%= plan.name.upcase %></h3>
+                          <div class="col-md-4 col-md-offset-5 text-center">
+                            <div class="plan-h3">
+                              <%= plan.name.upcase %>
+                            </div>
                           </div>
                         </div>
                         <div class="row">
@@ -79,7 +81,7 @@
                                           </li>
                                       </ul>
                                       <div class="plan-footer">
-                                          <%= link_to 'BUY NOW!', select_plan_path(subplan), class:"aa-browse-btn", method: :post %>
+                                          <%= link_to 'BUY NOW!', select_plan_path(subplan), class:"btn btn-lg btn-block btn-danger", method: :post %>
                                           <!-- <a class="btn btn-lg btn-block btn-danger" href="#">BUY NOW!</a> -->
                                       </div>
                                   </div>

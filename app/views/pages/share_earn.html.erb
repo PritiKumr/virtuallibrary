@@ -35,40 +35,31 @@
   <!-- End of header section -->
   <!-- Start of menu section -->
     <%= render 'shared/menu' %>
-  <!-- End of menu section -->
-    <section id="aa-myaccount">
+    <section id="aa-contact">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-           <div class="aa-myaccount-area">
-             <div class="aa-myaccount-login">
-               <h4>Reset your password</h4>
-               <div class="aa-login-form">
-                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-                  <%= devise_error_messages! %>
-                  <label for="">Email<span>*</span></label>
-                  <%= f.text_field :email, autofocus: true, placeholder: "Email" %>
-                  <%= f.submit "Send me reset password instructions", class:"aa-browse-btn forgotpwd" %>
-                <% end %>
-                <div class="signup">
-                  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-                    Don't have an account ?
-                    <%= link_to "Sign up", new_registration_path(resource_name) %><br />
-                  <% end -%>
+            <div class="aa-contact-area">
+              <div class="aa-contact-top">
+                <h2 class="aa-page-heading">Your <i class="fa fa-heart tealincolor"></i> for reading has become amazing than ever.</h2>
+                <div class="aa-page-content">
+                  <p>
+                    There are many book lovers, who all are having a library of their own lying around in their homes.
+                  </p>
+                  <p>
+                    But, they want don't want to sell it, after all it's <i class="fa fa-heart tealincolor"></i> of their life.
+                    Then we had a thought that there is no harm, if you never have to loose that love, but still for sometime, you
+                    can leave it alone, let it see some part of outside world.
+                  </p>
+                  <p>
+                    And you get to earn for every trip your love does. Isn't it wonderful?
+                  </p>
+                  <p>
+                    The best part is whenever you want your love to get back to you, just gives us a <i class="fa fa-phone tealincolor"></i>.
+                  </p>
                 </div>
-                <div class="aa-lost-password">
-                  <%- if controller_name != 'sessions' %>
-                    Already a memeber ?
-                    <%= link_to "Log in", new_session_path(resource_name) %><br />
-                  <% end -%>
-                </div>
-               </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
     <%= render 'shared/support' %>
     <%= render 'shared/subscribe' %>
     <%= render 'shared/footer' %>
