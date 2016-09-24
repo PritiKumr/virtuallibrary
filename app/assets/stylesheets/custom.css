@@ -2162,8 +2162,8 @@ img {
 }
 #aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-view-bottom {
   border-top: 1px solid #ddd;
-  margin-top: 10px;
-  padding-top: 10px;
+  margin-top: 55px;
+  padding-top: 20px;
 }
 #aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-view-bottom a {
   margin-right: 10px;
@@ -2191,6 +2191,7 @@ img {
   background-color: #fff;
   border: 1px solid #ccc;
 }
+
 #aa-product-details .aa-product-details-area .aa-product-details-bottom {
   display: inline;
   float: left;
@@ -2198,14 +2199,17 @@ img {
   margin-top: 20px;
   border-top: 1px solid #ccc;
 }
+
 #aa-product-details .aa-product-details-area .aa-product-details-bottom .nav-tabs {
-  text-align: center;
+  text-align: left;
 }
+
 #aa-product-details .aa-product-details-area .aa-product-details-bottom .nav-tabs li {
   display: inline-block;
   float: none;
   margin-bottom: 0px;
 }
+
 #aa-product-details .aa-product-details-area .aa-product-details-bottom .nav-tabs li a {
   border-radius: 0;
   border: none;
@@ -2308,6 +2312,58 @@ img {
 }
 #aa-product-details .aa-product-details-area .aa-product-related-item .slick-dots {
   display: none !important;
+}
+.aa-product-price{
+  font-size: 20px;
+  color: #e40046;
+  /*margin-top: 10px;*/
+}
+
+.aa-product-delivery{
+  margin-top: 20px;
+}
+
+.label-style{
+  width: 20px;
+  height:20px;
+  text-align: center;
+}
+
+.aa-book-bookmark-area{
+  position: relative;
+  padding-top: 0px;
+}
+
+.aa-book-bookmark-area a{
+  position: absolute;
+  right: 0px;
+  display: inline-block;
+  /*z-index: 97;*/
+}
+
+.aa-book-bookmark-area a:hover {
+  position: absolute;
+  right: 0px;
+  display: inline-block;
+  color: #e40046;
+  /*z-index: 97;*/
+}
+
+.aa-book-bookmark-area img{
+  padding-top: 10px;
+}
+
+.aa-bookmark-btn{
+  background: none;
+}
+
+.aa-book-author-title{
+  color: #888;
+  font-weight: bold;
+}
+
+.aa-book-author-name{
+  /*margin-left: 20px;*/
 }
 
 /*==================
@@ -2631,7 +2687,15 @@ img {
   background-position: center center;
   background-size: cover;
 }
-
+/*---- pincode form -----*/
+.aa-login-form input[type="text"]{
+  border: 1px solid #ccc;
+  font-size: 16px;
+  height: 40px;
+  margin-bottom: 15px;
+  padding: 10px;
+  width: 50%;
+}
 /*---- Login form ----*/
 
 .aa-login-form input[type="text"],
@@ -4259,11 +4323,6 @@ img {
   width: 100%;
 }
 
-#aa-plan .aa-plan-table{
-  margin-left: 300px;
-}
-
-
 .aa-plans-tab {
   display: block;
   text-align: center;
@@ -4278,7 +4337,7 @@ img {
 .aa-plans-tab li a {
   border: none;
   font-size: 16px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   border-radius: 0;
   border-bottom: 1px solid #fff;
   margin: 0 6px;
@@ -4303,10 +4362,20 @@ img {
   background-color: inherit;
 }
 
+.plan-h3{
+    border-radius: 2px;
+    background: teal;
+    padding: 10px;
+    width: 200px;
+    height: 40px;
+    color: white;
+}
 .plan-pricing {
   -moz-transition: all .3s ease;
   -o-transition: all .3s ease;
   -webkit-transition: all .3s ease;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .plan-pricing:hover {
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
@@ -4457,5 +4526,55 @@ a.socialIcon:hover, .socialHoverClass {
 }
 
 .social-circle-a {
- background-color: teal;
+ background-color: #e40046;
+}
+
+.aa-page-heading{
+  text-align: left;
+}
+.aa-page-content{
+  margin-top: 20px;
+  text-align: left;
+}
+
+/* Alert box styling */
+.alert-area{
+  display: inline-block;
+  float: right;
+}
+.alert {
+padding: 8px 35px 8px 14px;
+margin-bottom: 18px;
+color: #c09853;
+text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+background-color: #fcf8e3;
+border: 1px solid #fbeed5;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+.alert-heading {
+color: inherit;
+}
+.alert .close {
+position: relative;
+top: -2px;
+right: -21px;
+line-height: 18px;
+}
+.alert-success {
+color: #468847;
+background-color: #dff0d8;
+border-color: #d6e9c6;
+}
+.alert-danger,
+.alert-error {
+color: #b94a48;
+background-color: #f2dede;
+border-color: #eed3d7;
+}
+.alert-info {
+color: #3a87ad;
+background-color: #d9edf7;
+border-color: #bce8f1;
 }

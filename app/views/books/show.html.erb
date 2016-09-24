@@ -32,7 +32,7 @@
     <%= render 'shared/menu' %>
     <!-- catg header banner section -->
     <section id="aa-catg-head-banner">
-     <img src="fictional2.png" alt="fashion img">
+     <%= image_tag("fictional2.png", alt:"fictional image") %>
      <div class="aa-catg-head-banner-area">
        <div class="container">
         <div class="aa-catg-head-banner-content">
@@ -60,7 +60,16 @@
                     <div class="aa-product-view-slider">
                       <div id="demo-1" class="simpleLens-gallery-container">
                         <div class="simpleLens-container">
-                          <div class="simpleLens-big-image-container"><a data-lens-image="" class="simpleLens-lens-image"><img src="" class="simpleLens-big-image"></a></div>
+                          <div class="simpleLens-big-image-container">
+                            <div class="aa-book-bookmark-area">
+                              <!-- <a data-lens-image="" class="simpleLens-lens-image"> -->
+                                <%= image_tag(@book.front_image, class:"simpleLens-big-image", alt: "#{@book.name} image")%>
+                              <!-- </a> -->
+                              <a class="" href="#">
+                                <i class="fa fa-bookmark"></i>
+                              </a>
+                            </div>
+                          </div>
                         </div>
                         <div class="simpleLens-thumbnails-container">
                             <a data-big-image="" data-lens-image="" class="simpleLens-thumbnail-wrapper" href="#">
@@ -79,46 +88,87 @@
                   <!-- Modal view content -->
                   <div class="col-md-7 col-sm-7 col-xs-12">
                     <div class="aa-product-view-content">
-                      <h3><%= @book.name %></h3>
+                      <h3><%= @book.name %></h3></br>
                       <div class="aa-price-block">
-                        <span class="aa-product-view-price"><%= @book.price %></span>
-                        <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
+                        <div class="aa-product-price">
+                          <strong>₹ <%= @book.price.to_i %></strong>
+                        </div>
+                        <p class="aa-product-availability"><span class="label label-success label-style">In Stock</span></br>
                       </div>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi, veritatis quae repudiandae quod nulla porro quidem, itaque quis quaerat!</p>
-                      <h3>Author: </h3><h4><%= @book.author_name %></h4>
-                      <h3>Publication: </h3><h4><%= @book.publication_name %></h4>
-                      Enter your pincode to check for delivery.
-                      <%= form_tag check_pincode_path(@book), class: "form-group" do %>
-                        <%= number_field_tag :pincode, type: "number", class: "form-control" %>
-                      <% end %>
+                      <div class="aa-product-delivery">
+                        <i class="fa fa-map-marker tealincolor"></i> Enter pincode to check for delivery</br></br>
+                        <div class="aa-pincode-form">
+                          <%= form_tag check_pincode_path(@book), class: "form-group" do %>
+                            <%= text_field :pincode, type: "number", class: "form-control" %>
+                          <% end %>
+                        </div>
+                      </div>
                       <div class="aa-prod-view-bottom">
-                        <%= link_to 'Rent Now', book_carts_path(@book), method: :post, class: "aa-add-to-cart-btn" %>
-                        <a class="aa-add-to-cart-btn" href="#">Wishlist</a>
+                        <%= link_to 'Rent Now', book_carts_path(@book), method: :post, class: "aa-browse-btn" %>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="aa-product-details-bottom">
-                <ul class="nav nav-tabs" id="myTab2">
-                  <li><a href="#description" data-toggle="tab">Description</a></li>
-                  <li><a href="#review" data-toggle="tab">Reviews</a></li>
+                <ul class="nav nav-tabs aa-plans-tab">
+                   <li class="active"><a href="#limited" data-toggle="tab">Book Details</a></li>
+                   <li><a href="#unlimited" data-toggle="tab">Review</a></li>
                 </ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content">
                   <div class="tab-pane fade in active" id="description">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <ul>
-                      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, culpa!</li>
-                      <li>Lorem ipsum dolor sit amet.</li>
-                      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
-                      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor qui eius esse!</li>
-                      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, modi!</li>
-                    </ul>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, iusto earum voluptates autem esse molestiae ipsam, atque quam amet similique ducimus aliquid voluptate perferendis, distinctio!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ea, voluptas! Aliquam facere quas cumque rerum dolore impedit, dicta ducimus repellat dignissimos, fugiat, minima quaerat necessitatibus? Optio adipisci ab, obcaecati, porro unde accusantium facilis repudiandae.</p>
+                    <div class="aa-book-author-title">
+                      <span class="fa fa-user"></span> Author
+                    </div>
+                    <div class="aa-book-author-name">
+                      <ul>
+                        <li><%= @book.author_name %></li>
+                      </ul>
+                    </div>
+                    <div class="aa-book-author-title">
+                      <span class="fa fa-book"></span> Publication
+                    </div>
+                    <div class="aa-book-author-name">
+                      <ul>
+                        <li><%= @book.publication_name %></li>
+                      </ul>
+                    </div>
+                    <div class="aa-book-author-title">
+                      <span class="fa fa-pencil-square-o"></span> Edition
+                    </div>
+                    <div class="aa-book-author-name">
+                      <ul>
+                        <li><%= local_time(@book.edition, '%Y') %></li>
+                      </ul>
+                    </div>
+                    <div class="aa-book-author-title">
+                      <span class="fa fa-align-justify" aria-hidden="true"></span> Description
+                    </div>
+                    <div class="aa-book-author-name">
+                      <ul>
+                        <li><%= @book.desc %></li>
+                      </ul>
+                    </div>
+                    <div class="aa-book-author-title">
+                      <span class="fa fa-language" aria-hidden="true"></span> Language
+                    </div>
+                    <div class="aa-book-author-name">
+                      <ul>
+                        <li><%= @book.lang %></li>
+                      </ul>
+                    </div>
+                    <div class="aa-book-author-title">
+                      <span class="fa fa-info-circle" aria-hidden="true"></span> ISBN No.
+                    </div>
+                    <div class="aa-book-author-name">
+                      <ul>
+                        <li><%= @book.isbn_no %></li>
+                      </ul>
+                    </div>
                   </div>
+
                   <div class="tab-pane fade " id="review">
                    <div class="aa-product-review-area">
                      <h4>2 Reviews for T-Shirt</h4>

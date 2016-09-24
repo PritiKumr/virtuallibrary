@@ -19,4 +19,21 @@ class Book < ApplicationRecord
   def front_image
     book_catalogs.first.catalog.url if book_catalogs.present?
   end
+
+  def edition
+    book_info.edition
+  end
+
+  def desc
+    book_info.desc
+  end
+
+  def lang
+    book_info.lang
+  end
+
+  def isbn_no
+    book_info.isbn_no
+  end
+
 end

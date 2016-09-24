@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require nouislider
 //= require slick-carousel
+//= require local_time
 //= require smartmenus
 //= require turbolinks
 //= require_tree .
