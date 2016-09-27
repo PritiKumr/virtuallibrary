@@ -13,7 +13,7 @@ class BooksController < ApplicationController
     #   @category = Category.find_by(name: params[:category])
     #   @books = @category.books
     # end
-    @books = Book.all
+    @books = Book.order(price: :asc)
     @categories = Category.all
   end
 
