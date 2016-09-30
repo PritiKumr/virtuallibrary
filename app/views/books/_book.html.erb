@@ -3,7 +3,7 @@
     <a class="aa-product-img" href="#">
       <%= image_tag(book.front_image, alt: "#{book.name} image") %>
     </a>
-
+    <a class="aa-add-card-btn"href="#"><span class="fa fa-book"></span>Add To Library</a>
       <figcaption>
         <h4 class="aa-product-title">
           <%= link_to book.name, book %>
@@ -14,8 +14,7 @@
         <p class="aa-product-descrip">
           <%= book.desc %>
         </p>
-      </figcaption>
-      <a class="aa-add-card-btn"href="#"><span class="fa fa-book"></span>Add To Library</a>
+    </figcaption>
   </figure>
   <div class="aa-product-hvr-content">
     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Bookmark"><span class="fa fa-heart-o"></span></a>
