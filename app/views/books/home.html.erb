@@ -36,6 +36,10 @@
   <!-- Start of menu section -->
     <%= render 'shared/menu' %>
   <!-- End of menu section -->
+  <!-- Start slider -->
+  <section id="aa-slider">
+  </section>
+  <!-- / slider -->
     <!-- Start Promo section -->
     <section id="aa-promo">
       <div class="container">
@@ -48,8 +52,10 @@
                   <div class="aa-promo-left">
                     <div class="aa-promo-banner">
                       <!-- <img src="fictional_45.png" alt="fictional books"> -->
+                      <% @filename = "#{@categories[0].name}.jpg" %>
+                      <%= image_tag(@filename, alt: "#{@categories[0].name} books") %>
                       <div class="aa-prom-content">
-                        <h4><%= link_to @categories.first.name, books_url %></a></h4>
+                        <h4><%= link_to @categories[0].name, books_url %></a></h4>
                       </div>
                     </div>
                   </div>
@@ -114,44 +120,45 @@
                       <div class="tab-pane fade in active" id="fictional">
                         <ul class="aa-product-catg">
                           <% @books = @categories[0].books.limit(4) %>
-                          <%= render @books %>
+                          <%= render partial: 'book', collection: @books, locals: {home: true} %>
                         </ul>
                       </div>
                       <div class="tab-pane fade" id="non-fictional">
                         <ul class="aa-product-catg">
                           <% @books = @categories[1].books.limit(4) %>
-                          <%= render @books %>
+                          <%= render partial: 'book', collection: @books, locals: {home: true} %>
                         </ul>
                       </div>
                       <div class="tab-pane fade" id="self-help">
                         <ul class="aa-product-catg">
                           <% @books = @categories[2].books.limit(4) %>
-                          <%= render @books %>
+                          <%= render partial: 'book', collection: @books, locals: {home: true} %>
                         </ul>
                       </div>
                       <div class="tab-pane fade" id="competition-exams">
                         <ul class="aa-product-catg">
                           <% @books = @categories[3].books.limit(4) %>
-                          <%= render @books %>
+                          <%= render partial: 'book', collection: @books, locals: {home: true} %>
                         </ul>
                       </div>
                       <div class="tab-pane fade" id="educational">
                         <ul class="aa-product-catg">
                           <% @books = @categories[4].books.limit(4) %>
-                          <%= render @books %>
+                          <%= render partial: 'book', collection: @books, locals: {home: true} %>
                         </ul>
                       </div>
                       <div class="tab-pane fade" id="spiritual">
                         <ul class="aa-product-catg">
                           <% @books = @categories[5].books.limit(4) %>
-                          <%= render @books %>
+                          <%= render partial: 'book', collection: @books, locals: {home: true} %>
                         </ul>
+
                       </div>
+                      <%= link_to books_url, class: "aa-browse-btn" do %>
+                        Browse all Product
+                        <span class="fa fa-long-arrow-right"></span>
+                      <% end %>
                     </div>
-                    <%= link_to books_url, class: "aa-browse-btn" do %>
-                      Browse all Product
-                      <span class="fa fa-long-arrow-right"></span>
-                    <% end %>
                   </div>
                 </div>
               </div>

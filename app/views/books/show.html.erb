@@ -99,7 +99,7 @@
                         <i class="fa fa-map-marker tealincolor"></i> Enter pincode to check for delivery</br></br>
                         <div class="aa-pincode-form">
                           <%= form_tag check_pincode_path(@book), class: "form-group" do %>
-                            <%= text_field :pincode, type: "number", class: "form-control" %>
+                            <%= number_field :pincode, class: "form-control" %>
                           <% end %>
                         </div>
                       </div>

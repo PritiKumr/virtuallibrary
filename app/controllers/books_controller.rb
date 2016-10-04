@@ -9,12 +9,18 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    # if params[:category]
-    #   @category = Category.find_by(name: params[:category])
-    #   @books = @category.books
-    # end
-    @books = Book.order(price: :asc)
+    # TODO: If category is not present add a small error page specifically.
+    if params[:type].present?
+      category = Category.find(params[:type])
+      @books = category.books
+    elsif params[:author].present?
+      author = Author.find(params[:author])
+      @books = author.books
+    else
+      @books = Book.order(price: :asc)
+    end
     @categories = Category.all
+    @authors = Author.all
   end
 
   # GET /books/1

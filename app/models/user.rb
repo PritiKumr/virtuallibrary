@@ -16,7 +16,8 @@ class User < ApplicationRecord
 
   def self.delieverable?(pincode)
     allowed_pincode = YAML::load_file('config/data/pincode.yml')
-    allowed_pincode.include?(pincode.to_i)
+    puts allowed_pincode
+    allowed_pincode.include?(pincode)
   end
 
   def self.city(pincode)
@@ -54,7 +55,11 @@ class User < ApplicationRecord
   end
 
   def membership_expired?
-    sub_plan.expired_date == Date.today?
+    user_plan.expiry_date == Date.today
+  end
+
+  def membership_extended?(book)
+    book.price > sub_plan.max_price
   end
 
   def name

@@ -11,13 +11,16 @@
         <span class="aa-product-price">
           ₹<%= book.price.to_i %>
         </span>
-        <p class="aa-product-descrip">
-          <%= book.desc %>
-        </p>
+
+        <% if !home %>
+          <p class="aa-product-descrip">
+            <%= book.desc %>
+          </p>
+        <% end %>
     </figcaption>
   </figure>
   <div class="aa-product-hvr-content">
-    <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Bookmark"><span class="fa fa-heart-o"></span></a>
+    <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Bookmark"><span class="fa fa-bookmark"></span></a>
     <!-- <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a> -->
   </div>
 </li>

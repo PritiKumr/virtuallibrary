@@ -32,6 +32,8 @@ en:
     check_membership:
       no_membership: "Sorry! You still haven't selected the best plans for you."
       membership_expired: "Sorry! Your membership has been expired lately. But
-      nothing to worry, kindly renew with us, and keep enojoying the book services :)"
+      nothing to worry, kindly renew with us, and keep enojoying our book services :)"
+      membership_extended: "Sorry! The book you have selected doesn't seems to come under your subscribed plan.
+      Kindly upgrade your plan and don't miss your faviourte books. :)"
       max_price_reached: "Sorry! It seems that your cart has already reached the
       maximum price of books, according to your subscribed plan."
