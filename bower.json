@@ -27,6 +27,7 @@
     "components-font-awesome": "^4.6.3",
     "slick-carousel": "^1.6.0",
     "nouislider": "^8.5.1",
-    "smartmenus": "^1.0.0"
+    "smartmenus": "^1.0.0",
+    "seiyria-bootstrap-slider": "^9.2.0"
   }
 }

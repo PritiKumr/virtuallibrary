@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922192300) do
+ActiveRecord::Schema.define(version: 20161002104627) do
 
   create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 20160922192300) do
     t.integer  "sub_plan_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.date     "expiry_date"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

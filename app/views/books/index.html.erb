@@ -13,6 +13,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
   </head>
   <body>
    <!-- wpf loader Two -->
@@ -23,7 +26,7 @@
     </div> -->
     <!-- / wpf loader Two -->
   <!-- SCROLL TOP BUTTON -->
-    <!-- <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a> -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
   <!-- END SCROLL TOP BUTTON -->
   <!-- Start header section -->
     <%= render 'shared/header' %>
@@ -64,7 +67,7 @@
             </div>
             <div class="aa-product-catg-body">
               <ul class="aa-product-catg">
-                <%= render @books %>
+                <%= render partial: 'book', collection: @books, locals: {home: false} %>
               </ul>
             </div>
           </div>
@@ -76,7 +79,11 @@
               <h3>Category</h3>
               <ul class="aa-catg-nav">
                 <% @categories.each do |category| %>
-                  <li><a href="#"><%= category.name.capitalize %></a></li>
+                  <li>
+                    <%= link_to books_url(type: category.id) do %>
+                      <%= category.name.capitalize %>
+                    <% end %>
+                  </li>
                 <% end %>
               </ul>
             </div>
@@ -96,26 +103,23 @@
             <!-- single sidebar -->
             <div class="aa-sidebar-widget">
               <h3>Shop By Author</h3>
-              <div class="aa-color-tag">
-                <a class="aa-color-green" href="#"></a>
-                <a class="aa-color-yellow" href="#"></a>
-                <a class="aa-color-pink" href="#"></a>
-                <a class="aa-color-purple" href="#"></a>
-                <a class="aa-color-blue" href="#"></a>
-                <a class="aa-color-orange" href="#"></a>
-                <a class="aa-color-gray" href="#"></a>
-                <a class="aa-color-black" href="#"></a>
-                <a class="aa-color-white" href="#"></a>
-                <a class="aa-color-cyan" href="#"></a>
-                <a class="aa-color-olive" href="#"></a>
-                <a class="aa-color-orchid" href="#"></a>
-              </div>
+              <ul class="aa-catg-nav">
+                <% @authors.each do |author| %>
+                <li>
+                  <%= link_to books_url(author: author.id) do %>
+                    <%= author.name.capitalize %>
+                  <% end %>
+                </li>
+                <% end %>
+              </ul>
             </div>
             <!-- single sidebar -->
             <div class="aa-sidebar-widget">
               <h3>Shop By Price</h3>
+
               <!-- price range -->
               <div class="aa-sidebar-price-range">
+                 <b>€ 10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>€ 1000</b>
                <form action="">
                   <div id="skipstep" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
                   </div>

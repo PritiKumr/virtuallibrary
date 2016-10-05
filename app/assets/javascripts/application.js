@@ -13,7 +13,7 @@
 //= require jquery
 //= require bootstrap
 //= require jquery_ujs
-//= require nouislider
+//= require seiyria-bootstrap-slider
 //= require slick-carousel
 //= require local_time
 //= require smartmenus

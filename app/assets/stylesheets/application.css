@@ -14,6 +14,7 @@
  *= require components-font-awesome
  *= require slick-carousel
  *= require nouislider
+ *= require seiyria-bootstrap-slider
  *= require_tree .
  *= require_self
  */
