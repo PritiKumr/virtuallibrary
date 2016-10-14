@@ -9,13 +9,17 @@ class Order < ApplicationRecord
   belongs_to :user
 
   scope :active, -> {where.not(status: -1)}
-  
+
   def cart
     Cart.find_by(id: cart_id)
   end
 
   def update_cart_status
     cart.update(status: 1)
+  end
+
+  def self.inv_no
+    "#{SecureRandom.hex(2)}-#{SecureRandom.hex(4)}-#{SecureRandom.hex(4)}"
   end
 
 end

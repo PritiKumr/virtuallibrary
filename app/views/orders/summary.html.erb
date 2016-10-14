@@ -38,7 +38,7 @@
   <!-- End of menu section -->
     <!-- catg header banner section -->
     <section id="aa-catg-head-banner">
-     <%= image_tag("images/library.jpg", alt: "fashion img")%>
+     <img src="images/library.jpg" alt="fashion img">
      <div class="aa-catg-head-banner-area">
        <div class="container">
         <div class="aa-catg-head-banner-content">
@@ -52,15 +52,14 @@
      </div>
     </section>
     <!-- / catg header banner section -->
-
-   <!-- Cart view section -->
-   <section id="cart-view">
-     <div class="container">
-       <div class="row">
-         <div class="col-md-12">
-           <div class="cart-view-area">
-             <div class="cart-view-table">
-               <form action="">
+   <% if @cart.present? %>
+     <!-- Cart view section -->
+     <section id="cart-view">
+       <div class="container">
+         <div class="row">
+           <div class="col-md-12">
+             <div class="cart-view-area">
+               <div class="cart-view-table">
                  <div class="table-responsive">
                     <table class="table">
                       <thead>
@@ -85,9 +84,9 @@
                               </a>
                             </td>
                             <td>
-                              <%= link_to cart_book.book, class: 'aa-cart-title' do %>
-                                <%= cart_book.book.name %> by <%= cart_book.book.author_name %>
-                              <% end %>
+                              <a class="aa-cart-title" href="#">
+                                <%= cart_book.book.name %>
+                              </a> by <%= cart_book.book.author_name %>
                             </td>
                             <td>₹ <%= cart_book.price %></td>
                             <!-- <td><input class="aa-cart-quantity" type="number" value="1"></td> -->
@@ -96,36 +95,49 @@
                         <% end %>
                         <tr>
                           <td colspan="6" class="aa-cart-view-bottom">
-                            <%= link_to 'Continue renting more books', books_url, class: 'aa-browse-btn' %>
+                            Delivering to this address
+                            
                           </td>
                         </tr>
                         </tbody>
                     </table>
                   </div>
-               </form>
-               <!-- Cart Total view -->
-               <div class="cart-view-total">
-                 <h4>Cart Totals</h4>
-                 <table class="aa-totals-table">
-                   <tbody>
-                     <tr>
-                       <th>Subtotal</th>
-                       <td>₹ <%= @cart.value %></td>
-                     </tr>
-                     <tr>
-                       <th>Total</th>
-                       <td>₹ <%= @cart.value %></td>
-                     </tr>
-                   </tbody>
-                 </table>
-                 <%= link_to 'Proced to Checkout', order_checkout_path(@cart.id), class: 'aa-browse-btn'  %>
+                 <!-- Cart Total view -->
+                 <div class="cart-view-total">
+                   <h4>Cart Totals</h4>
+                   <table class="aa-totals-table">
+                     <tbody>
+                       <tr>
+                         <th>Subtotal</th>
+                         <td>₹ <%= @cart.value %></td>
+                       </tr>
+                       <tr>
+                         <th>Total</th>
+                         <td>₹ <%= @cart.value %></td>
+                       </tr>
+                     </tbody>
+                   </table>
+                   <%= link_to 'Proced to Checkout', select_shipping_address_path, class: 'aa-browse-btn'  %>
+                 </div>
                </div>
              </div>
            </div>
          </div>
        </div>
-     </div>
-   </section>
+     </section>
+    <% else %>
+    <section id="cart-view">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="aa-empty-cart-area">
+              <h2 class="aa-empty-cart"> Your shopping <i class="fa fa-shopping-cart"></i> is empty ! </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <% end %>
    <!-- / Cart view section -->
 <%= render 'shared/support' %>
 <%= render 'shared/subscribe' %>

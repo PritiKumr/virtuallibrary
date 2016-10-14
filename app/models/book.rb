@@ -6,6 +6,9 @@ class Book < ApplicationRecord
   has_one :category, through: :book_category
   has_one :book_info, dependent: :destroy
 
+  has_many :book_tags
+  has_many :tags, through: :book_tags
+  has_many :bookmarks
   # scope -> :featured, where('.featured = ?', 1).limit(4)
 
   def author_name
@@ -35,5 +38,11 @@ class Book < ApplicationRecord
   def isbn_no
     book_info.isbn_no
   end
+
+  def bookmark(user_id)
+    bookmarks.find_by(user_id: user_id)
+  end
+
+
 
 end

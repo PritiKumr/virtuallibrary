@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :set_cart, only: [:create]
+  before_action :set_cart, only: [:create, :checkout]
 
   # GET /orders
   # GET /orders.json
@@ -24,17 +24,50 @@ class OrdersController < ApplicationController
   def edit
   end
 
+  def select_shipping_address
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def new_address
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def summary
+    if params[:address_id].present?
+      @address = Address.find(params[:address_id])
+    else
+      @address = Address.create(
+        params[:first_name],
+        params[:last_name],
+        params[:company_name],
+        params[:contact_no],
+        params[:new_address],
+        params[:house_no],
+        params[:district],
+        params[:zipcode],
+        params[:city],
+        params[:special_notes]
+      )
+    end
+    @cart = current_user.carts.active
+    @cart_books = @cart.cart_books
+  end
+
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.create(
-      user_id: current_user.id,
-      value: @cart.value,
-      cart_id: @cart.id,
-      status: "Packed from warehouse."
-    )
+    # @order = Order.create(
+    #   user_id: current_user.id,
+    #   value: @cart.value,
+    #   cart_id: @cart.id,
+    #   status: "Packed from warehouse."
+    # )
     respond_to do |format|
-        format.html { redirect_to @order, notice: 'Yayy!! you have rented your books.' }
+        format.html { redirect_to home_url, notice: 'Yayy!! you have rented your books.' }
         format.json { render :show, status: :created, location: @order }
     end
   end
@@ -51,6 +84,10 @@ class OrdersController < ApplicationController
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def checkout
+    @cart_books = @cart.cart_books
   end
 
   # DELETE /orders/1

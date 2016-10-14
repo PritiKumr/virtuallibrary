@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bookmarks, only: [:destroy]
   resources :subscribers, only: [:create, :new]
   resources :user_infos
   resources :publications
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   resources :books do
     resources :carts
     resources :book_catalogs
+    resources :bookmarks, only: [:create]
   end
   resources :carts do
     resources :orders, except: [:index, :show, :edit]
@@ -26,4 +28,8 @@ Rails.application.routes.draw do
   get  "pages/:page" => "pages#show"
 
   delete "/cart_books/:id" => "carts#destroy_cart_book", as: 'destroy_cart_book'
+  get "/checkout/:cart_id" => "orders#checkout", as: 'order_checkout'
+
+  get "/shipping_address" => "orders#select_shipping_address", as: 'select_shipping_address'
+  post "/order_summary" => "orders#summary", as: 'order_summary'
 end

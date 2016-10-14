@@ -65,9 +65,22 @@
                               <!-- <a data-lens-image="" class="simpleLens-lens-image"> -->
                                 <%= image_tag(@book.front_image, class:"simpleLens-big-image", alt: "#{@book.name} image")%>
                               <!-- </a> -->
-                              <a class="" href="#">
-                                <i class="fa fa-bookmark"></i>
-                              </a>
+                              <% if user_signed_in? %>
+                                <% if current_user.bookmark_selected?(@book.id) %>
+                                  <% @bookmark = @book.bookmark(current_user.id) %>
+                                  <%= link_to bookmark_path(@bookmark), method: :delete, "data-toggle": "tooltip", "data-placement":"top", title: "Remove from Bookmark", class: 'aa-bookmark-selected'  do %>
+                                    <span class="fa fa-bookmark"></span>
+                                  <% end %>
+                                <% else %>
+                                  <%= link_to book_bookmarks_path(@book), method: :post, "data-toggle": "tooltip", "data-placement":"bottom", title: "Add to Bookmark"  do %>
+                                    <span class="fa fa-bookmark"></span>
+                                  <% end %>
+                                <% end %>
+                              <% else %>
+                                <%= link_to book_bookmarks_path(@book), method: :post, "data-toggle": "tooltip", "data-placement":"bottom", title: "Add to Bookmark"  do %>
+                                  <span class="fa fa-bookmark"></span>
+                                <% end %>
+                              <% end %>
                             </div>
                           </div>
                         </div>

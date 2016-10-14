@@ -76,6 +76,20 @@ img {
   border: none;
 }
 
+.aa-bookmark-selected {
+  text-decoration: none;
+  color: #e40046;
+}
+
+
+.img-logo{
+  width: 150px;
+}
+
+.shipping-addr-title{
+  color: #e40046;
+}
+
 .aa-primary-btn {
   font-size: 16px;
   padding: 10px 30px;
@@ -180,6 +194,13 @@ img {
   color: #fff;
 }
 
+.aa-empty-cart-area{
+  margin-top: 100px;
+  margin-bottom: 150px;
+}
+.aa-empty-cart{
+    text-align: center;
+}
 /* LAYOUTS - Page layout styles */
 /*==================
  HEADER SECTION
@@ -211,6 +232,10 @@ img {
   100% {
     top: -15px;
   }
+}
+
+.aa-checkout-book-title{
+  color: #e40046;
 }
 
 #aa-header {
@@ -2638,6 +2663,33 @@ img {
   width: 100%;
 }
 
+.aa-delivery-addrs-btn{
+  margin-top: 30px;
+  margin-left: 500px;
+  margin-bottom: 30px;
+}
+
+.aa-or{
+  width: 100%;
+  height: 20px;
+  border-bottom: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: lightgrey;
+  text-align: center;
+}
+
+.aa-or-span{
+  font-size: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #fff;
+  color: #e40046;
+}
+
+.aa-delivery-btn{
+  margin-left: 400px;
+  margin-top: 5px;
+}
 /*==================
  MY ACCOUNT  PAGE
 ====================*/

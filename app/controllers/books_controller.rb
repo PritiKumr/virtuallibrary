@@ -12,13 +12,17 @@ class BooksController < ApplicationController
     # TODO: If category is not present add a small error page specifically.
     if params[:type].present?
       category = Category.find(params[:type])
-      @books = category.books
+      @books = category.books.order(price: :asc)
     elsif params[:author].present?
       author = Author.find(params[:author])
-      @books = author.books
+      @books = author.books.order(price: :asc)
+    elsif params[:tag].present?
+      tag = Tag.find(params[:tag])
+      @books = tag.books.order(price: :asc)
     else
       @books = Book.order(price: :asc)
     end
+    @tags = Tag.all
     @categories = Category.all
     @authors = Author.all
   end
@@ -93,7 +97,7 @@ class BooksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # Use callbacks to share common setup or constraints between actions.    
     def set_book
       @book = Book.find(params[:id])
     end

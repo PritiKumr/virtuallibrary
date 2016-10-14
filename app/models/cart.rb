@@ -4,7 +4,10 @@ class Cart < ApplicationRecord
   # Status 1 represents that cart has been successfully converted into order.
   # Status 0 represents that cart is still in pending process.
 
-  scope :active, -> {find_by(status: 0)}
+
+  def self.active
+    find_by(status: 0)
+  end
 
   def self.update_cart(values = {})
     book = Book.find(values[:book_id])
@@ -29,6 +32,5 @@ class Cart < ApplicationRecord
   def self.total_value(cart_id)
     CartBook.where(cart_id: cart_id).sum(:price)
   end
-
 
 end

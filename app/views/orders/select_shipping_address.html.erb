@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Book Store | Home</title>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'> -->
+
+  </head>
+  <body>
+   <!-- wpf loader Two -->
+    <!-- <div id="wpf-loader-two">
+      <div class="wpf-loader-two-inner">
+        <span>Loading</span>
+      </div>
+    </div> -->
+    <!-- / wpf loader Two -->
+  <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start header section -->
+    <%= render 'shared/header' %>
+  <!-- End of header section -->
+  <!-- Start of menu section -->
+    <%= render 'shared/menu' %>
+  <!-- End of menu section -->
+  <section id="aa-catg-head-banner">
+   <%= image_tag("library.jpg", alt: "order page")%>
+   <div class="aa-catg-head-banner-area">
+     <div class="container">
+      <div class="aa-catg-head-banner-content">
+        <h2>Checkout Page</h2>
+        <ol class="breadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li class="active">Checkout</li>
+        </ol>
+      </div>
+     </div>
+   </div>
+  </section>
+  <!-- / catg header banner section -->
+  <!-- Cart view section -->
+  <section id="checkout">
+    <div class="container">
+      <div class="checkout-area">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="checkout-left">
+              <% if current_user.addresses.present? %>
+                <div class="panel-group" id="accordion">
+                  <div class="panel panel-default aa-checkout-coupon">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        Deliver to already added address
+                      </a>
+                        </h4>
+                      </div>
+                      <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                          <div class="row">
+                              <%= form_tag(order_summary_path, method: :post) do %>
+                                <div class="col-md-5">
+                                <% current_user.addresses.each do |address| %>
+                                  <%= radio_button_tag(:address, address.id) %>
+                                  <%= label_tag(:address, address.title) %>
+                                  <br>
+                                <% end %>
+                                </div>
+                                <div class="col-md-5">
+                                  <div class="aa-delivery-btn">
+                                    <%= submit_tag 'Deliver to this address', class: 'aa-browse-btn' %>
+                                  </div>
+                                </div>
+                              <% end %>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="aa-or">
+                                <span class="aa-or-span"> OR </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="aa-delivery-addrs-btn">
+                                <%= link_to 'Add a new address', home_url, class: 'aa-browse-btn' %>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% else %>
+                  <h2 class="aa-empty-cart"> No address <i class="fa fa-map-marker"></i> found !
+                    <%= link_to 'Add a new address', home_url, class: 'aa-browse-btn' %>
+                  </h2>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </section>
+     <!-- / Cart view section -->
+     <%= render 'shared/support' %>
+     <%= render 'shared/subscribe' %>
+     <%= render 'shared/footer' %>

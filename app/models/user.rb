@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :carts
   has_one :user_plan
   has_one :sub_plan, through: :user_plan
+  has_many :addresses
+  has_many :bookmarks
 
   def is_active?
     user_info.status?
@@ -63,15 +65,23 @@ class User < ApplicationRecord
   end
 
   def name
-    "#{user_info.first_name} #{user_info.last_name}"
-  end
-
-  def address
-    "#{user_info.address1}, #{user_info.address2}, #{user_info.pincode}, #{user_info.city}"
+    if user_info.present?
+      if user_info.first_name.present? && user_info.last_name.present?
+        "#{user_info.first_name} #{user_info.last_name}".capitalize
+      elsif user_info.first_name.present?
+        "#{user_info.first_name}".capitalize
+      end
+    else
+      email.split('@')[0].capitalize
+    end
   end
 
   def avatar
     user_info.avatar.url
+  end
+
+  def bookmark_selected?(book_id)
+    bookmarks.pluck(:book_id).include?(book_id)
   end
 
 end

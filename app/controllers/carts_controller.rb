@@ -11,14 +11,14 @@ class CartsController < ApplicationController
   # GET /carts.json
   def index
     @cart = current_user.carts.active
-    @cart_books = @cart.cart_books
+    @cart_books = @cart.cart_books if @cart.present?
   end
 
   # GET /carts/1
   # GET /carts/1.json
   def show
     @cart = current_user.carts.active
-    @cart_books = @cart.cart_books
+    @cart_books = @cart.cart_books if @cart.present?
   end
 
   # GET /carts/new
@@ -83,10 +83,7 @@ class CartsController < ApplicationController
 
     def check_signin
       if !user_signed_in?
-        respond_to do |format|
-          message = 'If you want to be a part of our family,
-          kindly register with us and enjoy the fun of joint family. :) OR
-          if you are already part of this fun you can directly log in :D'
+        respond_to do |format|          
           format.html{
             redirect_to new_user_session_path, notice: message
           }

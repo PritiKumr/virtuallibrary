@@ -44,6 +44,7 @@ gem 'geocoder'
 
 gem 'local_time'
 
+# gem 'validates_zipcode'
 # gem 'obfuscate_id'
 
 group :development, :test do

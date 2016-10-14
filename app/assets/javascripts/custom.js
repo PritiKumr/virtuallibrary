@@ -27,7 +27,16 @@
 
 jQuery(function($){
 
-
+  $('#contact_no').click(function(){
+    var val = ('#contact_no').value
+      if (/^\d{10}$/.test(val)) {
+          // value is ok, use it
+      } else {
+          alert("Invalid number; must be ten digits")
+          number.focus()
+          return false
+    }
+  });
   /* ----------------------------------------------------------- */
   /*  1. CARTBOX
   /* ----------------------------------------------------------- */

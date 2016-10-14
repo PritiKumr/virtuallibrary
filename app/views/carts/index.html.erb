@@ -52,80 +52,93 @@
      </div>
     </section>
     <!-- / catg header banner section -->
-
-   <!-- Cart view section -->
-   <section id="cart-view">
-     <div class="container">
-       <div class="row">
-         <div class="col-md-12">
-           <div class="cart-view-area">
-             <div class="cart-view-table">
-               <form action="">
-                 <div class="table-responsive">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th></th>
-                          <th></th>
-                          <th>Product</th>
-                          <th>Price</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <% @cart_books.each do |cart_book| %>
+   <% if @cart.present? %>
+     <!-- Cart view section -->
+     <section id="cart-view">
+       <div class="container">
+         <div class="row">
+           <div class="col-md-12">
+             <div class="cart-view-area">
+               <div class="cart-view-table">
+                 <form action="">
+                   <div class="table-responsive">
+                      <table class="table">
+                        <thead>
                           <tr>
-                            <td>
-                              <%= link_to destroy_cart_book_path(cart_book), method: :delete, data: { confirm: 'Are you sure?' }, class:'remove' do %>
-                                <fa class="fa fa-close"></fa>
-                              <% end %>
-                            </td>
-                            <td>
-                              <a href="#">
-                                <%= image_tag(cart_book.book.front_image, alt: "#{cart_book.book.name} image") %>
-                              </a>
-                            </td>
-                            <td>
-                              <a class="aa-cart-title" href="#">
-                                <%= cart_book.book.name %>
-                              </a> by <%= cart_book.book.author_name %>
-                            </td>
-                            <td>₹ <%= cart_book.price %></td>
-                            <!-- <td><input class="aa-cart-quantity" type="number" value="1"></td> -->
-                            <!-- <td>$250</td> -->
+                            <th></th>
+                            <th></th>
+                            <th>Product</th>
+                            <th>Price</th>
                           </tr>
-                        <% end %>
-                        <tr>
-                          <td colspan="6" class="aa-cart-view-bottom">
-                            <%= link_to 'Continue renting more books', books_url, class: 'aa-browse-btn' %>
-                          </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                  </div>
-               </form>
-               <!-- Cart Total view -->
-               <div class="cart-view-total">
-                 <h4>Cart Totals</h4>
-                 <table class="aa-totals-table">
-                   <tbody>
-                     <tr>
-                       <th>Subtotal</th>
-                       <td>₹ <%= @cart.value %></td>
-                     </tr>
-                     <tr>
-                       <th>Total</th>
-                       <td>₹ <%= @cart.value %></td>
-                     </tr>
-                   </tbody>
-                 </table>
-                 <%= link_to 'Proced to Checkout', cart_orders_path(@cart), method: :post,class: 'aa-browse-btn'  %>
+                        </thead>
+                        <tbody>
+                          <% @cart_books.each do |cart_book| %>
+                            <tr>
+                              <td>
+                                <%= link_to destroy_cart_book_path(cart_book), method: :delete, data: { confirm: 'Are you sure?' }, class:'remove' do %>
+                                  <fa class="fa fa-close"></fa>
+                                <% end %>
+                              </td>
+                              <td>
+                                <a href="#">
+                                  <%= image_tag(cart_book.book.front_image, alt: "#{cart_book.book.name} image") %>
+                                </a>
+                              </td>
+                              <td>
+                                <a class="aa-cart-title" href="#">
+                                  <%= cart_book.book.name %>
+                                </a> by <%= cart_book.book.author_name %>
+                              </td>
+                              <td>₹ <%= cart_book.price %></td>
+                              <!-- <td><input class="aa-cart-quantity" type="number" value="1"></td> -->
+                              <!-- <td>$250</td> -->
+                            </tr>
+                          <% end %>
+                          <tr>
+                            <td colspan="6" class="aa-cart-view-bottom">
+                              <%= link_to 'Continue renting more books', books_url, class: 'aa-browse-btn' %>
+                            </td>
+                          </tr>
+                          </tbody>
+                      </table>
+                    </div>
+                 </form>
+                 <!-- Cart Total view -->
+                 <div class="cart-view-total">
+                   <h4>Cart Totals</h4>
+                   <table class="aa-totals-table">
+                     <tbody>
+                       <tr>
+                         <th>Subtotal</th>
+                         <td>₹ <%= @cart.value %></td>
+                       </tr>
+                       <tr>
+                         <th>Total</th>
+                         <td>₹ <%= @cart.value %></td>
+                       </tr>
+                     </tbody>
+                   </table>
+                   <%= link_to 'Proced to Checkout', select_shipping_address_path, class: 'aa-browse-btn'  %>
+                 </div>
                </div>
              </div>
            </div>
          </div>
        </div>
-     </div>
-   </section>
+     </section>
+    <% else %>
+    <section id="cart-view">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="aa-empty-cart-area">
+              <h2 class="aa-empty-cart"> Your shopping <i class="fa fa-shopping-cart"></i> is empty ! </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <% end %>
    <!-- / Cart view section -->
 <%= render 'shared/support' %>
 <%= render 'shared/subscribe' %>

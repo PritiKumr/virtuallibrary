@@ -37,3 +37,12 @@ en:
       Kindly upgrade your plan and don't miss your faviourte books. :)"
       max_price_reached: "Sorry! It seems that your cart has already reached the
       maximum price of books, according to your subscribed plan."
+  bookmarks:
+    create:
+      successfully_added: "%{book} has been successfully added to your bookmark."
+    destroy:
+      successfully_removed: "%{book} has been successfully removed from your bookmark."
+    check_signin:
+      signin_message: "If you want to be a part of kitabiworm family,
+        kindly register with us and enjoy the fun of reading book. :) OR
+        if you are already part of this fun you can directly log in :D"
