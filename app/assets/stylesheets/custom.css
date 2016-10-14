@@ -1445,6 +1445,12 @@ img {
   float: left;
   width: 100%;
 }
+
+.aa-support-service {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
 #aa-support .aa-support-area .aa-support-single span {
   font-size: 30px;
 }
@@ -3506,12 +3512,14 @@ img {
   float: left;
   width: 100%;
 }
+
 #aa-footer .aa-footer-top {
   display: inline;
   float: left;
-  padding-top: 30px;
+  margin-left: 200px;
+  /*padding-top: 30px;
   padding-left: 470px;
-  padding-bottom: 30px;
+  padding-bottom: 30px;*/
   width: 100%;
   min-height: 100px;
 }
@@ -4633,28 +4641,4 @@ background-color: #d9edf7;
 border-color: #bce8f1;
 }
 
-.carousel,
-.item,
-.active {
-    height: 100%;
-}
-
-.carousel-inner {
-    height: 100%;
-}
-
 /* Background images are set within the HTML using inline CSS, not here */
-
-.fill {
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
-
-footer {
-    margin: 50px 0;
-}

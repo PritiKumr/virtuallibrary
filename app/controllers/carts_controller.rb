@@ -83,9 +83,9 @@ class CartsController < ApplicationController
 
     def check_signin
       if !user_signed_in?
-        respond_to do |format|          
+        respond_to do |format|
           format.html{
-            redirect_to new_user_session_path, notice: message
+            redirect_to new_user_session_path, notice: t('signin_message')
           }
         end
       end

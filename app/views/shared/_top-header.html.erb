@@ -12,7 +12,7 @@
             <div class="cellphone hidden-xs">
               <p>
                 <span class="fa fa-envelope tealincolor"></span>
-                support@virtuallib.com
+                support@kitabiworm.com
               </p>
             </div>
             <!-- / cellphone -->
@@ -25,13 +25,13 @@
                 <% if @user_info.present? %>
                   <li class="hidden-xs">
                     <%= link_to user_info_path(@user_info), "data-toggle": "tooltip", "data-placement":"bottom", title: 'My Avatar' do %>
-                      Hi <span> <%= current_user.email %>! </span><i class="fa fa-user tealincolor"></i>
+                      Hi <span> <%= current_user.name %> </span><i class="fa fa-user tealincolor"></i>
                     <% end %>
                   </li>
                 <% else %>
                   <li>
                     <%= link_to new_user_info_path, "data-toggle": "tooltip", "data-placement":"bottom", title: 'My Avatar' do %>
-                      Hi <span> <%= current_user.email %>! </span><i class="fa fa-user tealincolor"></i>
+                      Hi <span> <%= current_user.name %> </span><i class="fa fa-user tealincolor"></i>
                     <% end %>
                   </li>
                 <% end %>
