@@ -6,21 +6,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks
   # GET /bookmarks.json
   def index
-    @bookmarks = Bookmark.all
-  end
-
-  # GET /bookmarks/1
-  # GET /bookmarks/1.json
-  def show
-  end
-
-  # GET /bookmarks/new
-  def new
-    @bookmark = Bookmark.new
-  end
-
-  # GET /bookmarks/1/edit
-  def edit
+    @bookmarks = current_user.bookmarks.all
   end
 
   # POST /bookmarks
@@ -42,20 +28,6 @@ class BookmarksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bookmarks/1
-  # PATCH/PUT /bookmarks/1.json
-  def update
-    respond_to do |format|
-      if @bookmark.update(bookmark_params)
-        format.html { redirect_to @bookmark, notice: 'Bookmark was successfully updated.' }
-        format.json { render :show, status: :ok, location: @bookmark }
-      else
-        format.html { render :edit }
-        format.json { render json: @bookmark.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /bookmarks/1
   # DELETE /bookmarks/1.json
   def destroy
@@ -63,7 +35,7 @@ class BookmarksController < ApplicationController
     @bookmark.destroy
     respond_to do |format|
       format.html {
-        redirect_to @book,
+        redirect_to bookmarks_path,
         notice: t('.successfully_removed', book: @book.name)
       }
       format.json { head :no_content }

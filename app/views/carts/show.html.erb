@@ -66,7 +66,7 @@
                         <tr>
                           <th></th>
                           <th></th>
-                          <th>Product</th>
+                          <th>Book</th>
                           <th>Price</th>
                         </tr>
                       </thead>
@@ -79,9 +79,7 @@
                               <% end %>
                             </td>
                             <td>
-                              <a href="#">
-                                <%= image_tag(cart_book.book.front_image, alt: "#{cart_book.book.name} image") %>
-                              </a>
+                              <%= image_tag(cart_book.book.front_image, alt: "#{cart_book.book.name} image") %>                              
                             </td>
                             <td>
                               <%= link_to cart_book.book, class: 'aa-cart-title' do %>
@@ -100,7 +98,7 @@
                         </tr>
                         </tbody>
                     </table>
-                  </div>        
+                  </div>
                <!-- Cart Total view -->
                <div class="cart-view-total">
                  <h4>Cart Totals</h4>

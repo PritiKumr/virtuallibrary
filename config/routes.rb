@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :bookmarks, only: [:destroy]
+  resources :bookmarks, only: [:destroy, :index]
   resources :subscribers, only: [:create, :new]
   resources :user_infos
   resources :publications

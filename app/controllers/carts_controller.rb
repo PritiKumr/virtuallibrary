@@ -35,7 +35,7 @@ class CartsController < ApplicationController
   def create
     @cart = Cart.update_cart({book_id: @book.id, user_id: current_user.id})
     respond_to do |format|
-      format.html {redirect_to @cart, notice: 'You have successfully rented this book.'}
+      format.html {redirect_to @cart, notice: "You have successfully added #{@book.name} to cart."}
       # if @cart.save
       #   format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
       #   format.json { render :show, status: :created, location: @cart }
@@ -71,9 +71,10 @@ class CartsController < ApplicationController
   end
 
   def destroy_cart_book
+    @book_name = @cart_book.book.name
     @cart_book.destroy
     respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Book was successfully removed.' }
+      format.html { redirect_to carts_url, notice: "#{@book_name} was successfully removed from cart." }
       format.json { head :no_content }
     end
   end

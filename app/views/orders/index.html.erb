@@ -50,171 +50,167 @@
                      </div>
                      <div class="row">
                        <div class="col-md-12">
-                               <ul class="nav nav-tabs aa-plans-tab order-display-block">
-                                  <li class="active"><a href="#pending" data-toggle="tab">Pending</a></li>
-                                  <li><a href="#delievered" data-toggle="tab">Delievered</a></li>
-                                  <li><a href="#return_pending" data-toggle="tab">Return Pending</a></li>
-                                  <li><a href="#completed_orders" data-toggle="tab">Completed Orders</a></li>
-                               </ul>
-                               <div class="tab-content">
-                                  <div class="tab-pane fade in active" id="pending">
-                                    <div class="order-body">
-                                      <table class="order-table">
-                                        <thead>
-                                          <tr>
-                                            <th colspan="5">Pending Orders</th>
-                                          </tr>
-                                          <tr>
-                                            <th>Order No.</th>
-                                            <th>Amount</th>
-                                            <th>Inv. Date</th>
-                                            <th colspan="2">Action</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <% @pending_orders.each do |order| %>
-                                            <tr>
-                                              <td>
-                                                  #<%= order.inv_no %>
-                                              </td>
-                                              <td>
-                                                  ₹<%= order.value %>
-                                              </td>
-                                              <td>
-                                                  <%= local_time(order.created_at, "%B %e, %Y") %>
-                                              </td>
+                         <ul class="nav nav-tabs aa-plans-tab order-display-block">
+                            <li class="active"><a href="#pending" data-toggle="tab">Pending</a></li>
+                            <li><a href="#delievered" data-toggle="tab">Delievered</a></li>
+                            <li><a href="#return_pending" data-toggle="tab">Return Pending</a></li>
+                            <li><a href="#completed_orders" data-toggle="tab">Completed Orders</a></li>
+                         </ul>
+                         <div class="tab-content">
+                            <div class="tab-pane fade in active" id="pending">
+                              <div class="order-body">
+                                <table class="order-table">
+                                  <thead>
+                                    <tr>
+                                      <th colspan="5">Pending Orders</th>
+                                    </tr>
+                                    <tr>
+                                      <th>Order No.</th>
+                                      <th>Amount</th>
+                                      <th>Inv. Date</th>
+                                      <th colspan="2">Action</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <% @pending_orders.each do |order| %>
+                                      <tr>
+                                        <td>
+                                            #<%= order.inv_no %>
+                                        </td>
+                                        <td>
+                                            ₹<%= order.value %>
+                                        </td>
+                                        <td>
+                                            <%= local_time(order.created_at, "%B %e, %Y") %>
+                                        </td>
 
-                                              <td>
-                                                  <%= link_to order, class:'aa-browse-btn small-btn' do %>
-                                                    Show
-                                                  <% end %>
-                                                  <%= link_to order, class:'aa-browse-btn' do %>
-                                                    Cancel order
-                                                  <% end %>
-                                              </td>
-                                            </tr>
-                                          <% end %>
-                                        </tbody>
-                                      </table>
-                                    </div>
-                                  </div>
-                                  <div class="tab-pane fade" id="delievered">
-                                    <div class="order-body">
-                                      <table class="order-table">
-                                        <thead>
-                                          <tr>
-                                            <th colspan="5">Delivered Orders</th>
-                                          </tr>
-                                          <tr>
-                                            <th>Order No.</th>
-                                            <th>Amount</th>
-                                            <th>Delivered Date</th>
-                                            <th colspan="2">Action</th>
-                                          </tr>
-                                        </thead>
-                                        <% @delivered_orders.each do |order| %>
-                                          <tr>
-                                            <td>
-                                                #<%= order.inv_no %>
-                                            </td>
-                                            <td>
-                                                ₹<%= order.value %>
-                                            </td>
-                                            <td>
-                                                ₹<%= order.delivery_date  %>
-                                            </td>
-                                            <td>
-                                                <%= link_to 'Request for return', order %>
-                                            </td>
-                                          </tr>
-                                        <% end %>
-                                      </table>
-                                    </div>
-                                  </div>
-                                  <div class="tab-pane fade" id="return_pending">
-                                    <div class="order-body">
-                                      <table class="order-table">
-                                        <thead>
-                                          <tr>
-                                            <th colspan="5">Return Pending Orders</th>
-                                          </tr>
-                                          <tr>
-                                            <th>Order No.</th>
-                                            <th>Amount</th>
-                                            <th>Return Date</th>
-                                            <th colspan="2">Action</th>
-                                          </tr>
-                                        </thead>
-                                        <% @return_pending.each do |order| %>
-                                          <tr>
-                                            <td>
-                                                #<%= order.inv_no %>
-                                            </td>
-                                            <td>
-                                                ₹<%= order.value %>
-                                            </td>
-                                            <td>
-                                                ₹<%= order.return_date  %>
-                                            </td>
-                                            <td>
-                                                <%= link_to 'Uprade your plan', order %>
-                                            </td>
-                                          </tr>
-                                        <% end %>
-                                      </table>
-                                    </div>
-                                  </div>
-                                  <div class="tab-pane fade" id="completed_orders">
-                                    <div class="order-body">
-                                      <table class="order-table">
-                                        <thead>
-                                          <tr>
-                                            <th colspan="5">Completed Orders</th>
-                                          </tr>
-                                          <tr>
-                                            <th>Order No.</th>
-                                            <th>Amount</th>
-                                            <th>Inv. Date</th>
-                                            <th>Delivery Date</th>
-                                            <th colspan="2">Returned Date</th>
-                                          </tr>
-                                        </thead>
-                                        <% @completed_orders.each do |order| %>
-                                          <tr>
-                                            <td>
-                                                #<%= order.inv_no %>
-                                            </td>
-                                            <td>
-                                                ₹<%= order.value %>
-                                            </td>
-                                            <td>
-                                                <%= order.created_at %>
-                                            </td>
-                                            <td>
-                                                <%= order.delivery_date %>
-                                            </td>
-                                            <td>
-                                                <%= order.return_on %>
-                                            </td>
-                                          </tr>
-                                        <% end %>
-                                      </table>
-                                    </div>
-                                  </div>
-                                </div>
+                                        <td>
+                                            <%= link_to order, class:'aa-browse-btn small-btn' do %>
+                                              Show
+                                            <% end %>
+                                            <%= link_to order, class:'aa-browse-btn' do %>
+                                              Cancel order
+                                            <% end %>
+                                        </td>
+                                      </tr>
+                                    <% end %>
+                                  </tbody>
+                                </table>
                               </div>
-                             </div>
-                           </div>
-                         </div>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
+                            </div>
+                            <div class="tab-pane fade" id="delievered">
+                              <div class="order-body">
+                                <table class="order-table">
+                                  <thead>
+                                    <tr>
+                                      <th colspan="5">Delivered Orders</th>
+                                    </tr>
+                                    <tr>
+                                      <th>Order No.</th>
+                                      <th>Amount</th>
+                                      <th>Delivered Date</th>
+                                      <th colspan="2">Action</th>
+                                    </tr>
+                                  </thead>
+                                  <% @delivered_orders.each do |order| %>
+                                    <tr>
+                                      <td>
+                                          #<%= order.inv_no %>
+                                      </td>
+                                      <td>
+                                          ₹<%= order.value %>
+                                      </td>
+                                      <td>
+                                          ₹<%= order.delivery_date  %>
+                                      </td>
+                                      <td>
+                                          <%= link_to 'Request for return', order %>
+                                      </td>
+                                    </tr>
+                                  <% end %>
+                                </table>
+                              </div>
+                            </div>
+                            <div class="tab-pane fade" id="return_pending">
+                              <div class="order-body">
+                                <table class="order-table">
+                                  <thead>
+                                    <tr>
+                                      <th colspan="5">Return Pending Orders</th>
+                                    </tr>
+                                    <tr>
+                                      <th>Order No.</th>
+                                      <th>Amount</th>
+                                      <th>Return Date</th>
+                                      <th colspan="2">Action</th>
+                                    </tr>
+                                  </thead>
+                                  <% @return_pending.each do |order| %>
+                                    <tr>
+                                      <td>
+                                          #<%= order.inv_no %>
+                                      </td>
+                                      <td>
+                                          ₹<%= order.value %>
+                                      </td>
+                                      <td>
+                                          ₹<%= order.return_date  %>
+                                      </td>
+                                      <td>
+                                          <%= link_to 'Uprade your plan', order %>
+                                      </td>
+                                    </tr>
+                                  <% end %>
+                                </table>
+                              </div>
+                            </div>
+                            <div class="tab-pane fade" id="completed_orders">
+                              <div class="order-body">
+                                <table class="order-table">
+                                  <thead>
+                                    <tr>
+                                      <th colspan="5">Completed Orders</th>
+                                    </tr>
+                                    <tr>
+                                      <th>Order No.</th>
+                                      <th>Amount</th>
+                                      <th>Inv. Date</th>
+                                      <th>Delivery Date</th>
+                                      <th colspan="2">Returned Date</th>
+                                    </tr>
+                                  </thead>
+                                  <% @completed_orders.each do |order| %>
+                                    <tr>
+                                      <td>
+                                          #<%= order.inv_no %>
+                                      </td>
+                                      <td>
+                                          ₹<%= order.value %>
+                                      </td>
+                                      <td>
+                                          <%= order.created_at %>
+                                      </td>
+                                      <td>
+                                          <%= order.delivery_date %>
+                                      </td>
+                                      <td>
+                                          <%= order.return_on %>
+                                      </td>
+                                    </tr>
+                                  <% end %>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div>            
     </section>
     <%= render 'shared/support' %>
     <%= render 'shared/subscribe' %>

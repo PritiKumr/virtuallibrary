@@ -2413,6 +2413,7 @@ img {
   float: left;
   padding-top: 50px;
   width: 100%;
+  padding-bottom: 50px;
 }
 #cart-view .cart-view-area .cart-view-table {
   background-color: #F5F5F5;
@@ -2433,6 +2434,7 @@ img {
   padding: 20px 0;
   text-align: center;
 }
+
 #cart-view .cart-view-area .cart-view-table .table tbody tr td {
   vertical-align: middle;
   border-right: 1px solid #ccc;
@@ -4721,4 +4723,8 @@ border-color: #bce8f1;
 
 .text-center{
   text-align: center;
+}
+
+.order-no{
+  margin-left: 10px;
 }

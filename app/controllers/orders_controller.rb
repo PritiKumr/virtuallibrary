@@ -65,7 +65,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    current_user.orders.create(
+    @order = current_user.orders.create(
       value: @cart.value,
       status: 0,
       cart_id: @cart.id,
@@ -73,7 +73,7 @@ class OrdersController < ApplicationController
       address_id: params[:address_id]
     )
     respond_to do |format|
-        format.html { redirect_to home_url, notice: 'Yayy!! you have rented your books.' }
+        format.html { redirect_to @order, notice: 'Yayy!! you have rented your books.' }
         # format.json { render :show, status: :created, location: @order }
     end
   end
