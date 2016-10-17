@@ -10,20 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014172132) do
+ActiveRecord::Schema.define(version: 20161017060823) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "user_id"
-    t.string   "pincode"
-    t.string   "sstring"
-    t.string   "address1"
-    t.string   "text"
-    t.string   "address2"
+    t.string   "company_name"
+    t.string   "contact_no"
+    t.text     "full_address",  limit: 65535
+    t.string   "house_no"
     t.string   "city"
-    t.float    "latitude",   limit: 24
-    t.float    "longitude",  limit: 24
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "district"
+    t.string   "pincode"
+    t.float    "longitude",     limit: 24
+    t.float    "latitude",      limit: 24
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.boolean  "personal_addr"
   end
 
   create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -123,6 +127,7 @@ ActiveRecord::Schema.define(version: 20161014172132) do
     t.date     "return_date"
     t.string   "inv_no"
     t.integer  "address_id"
+    t.date     "returned_on"
   end
 
   create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

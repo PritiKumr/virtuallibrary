@@ -1,11 +1,16 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :set_cart, only: [:create, :checkout]
+  before_action :set_cart, only: [:create]
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = current_user.orders
+    orders = current_user.orders
+    @pending_orders = orders.pending
+    @delivered_orders = orders.delievered
+    @return_pending = orders.return_pending
+    @completed_orders = orders.completed
+
   end
 
   # GET /orders/1
@@ -40,18 +45,18 @@ class OrdersController < ApplicationController
     if params[:address_id].present?
       @address = Address.find(params[:address_id])
     else
-      @address = Address.create(
-        params[:first_name],
-        params[:last_name],
-        params[:company_name],
-        params[:contact_no],
-        params[:new_address],
-        params[:house_no],
-        params[:district],
-        params[:zipcode],
-        params[:city],
-        params[:special_notes]
-      )
+      shippping_addr = {
+        first_name: params[:address][:first_name],
+        last_name: params[:address][:last_name],
+        company_name: params[:address][:company_name],
+        full_address: params[:address][:full_address],
+        contact_no: params[:address][:contact_no],
+        house_no: params[:address][:house_no],
+        city: params[:address][:city],
+        district: params[:address][:district],
+        pincode: params[:address][:pincode]
+      }
+      @address = Address.add_shipping_addr(current_user, shippping_addr)
     end
     @cart = current_user.carts.active
     @cart_books = @cart.cart_books
@@ -60,15 +65,16 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    # @order = Order.create(
-    #   user_id: current_user.id,
-    #   value: @cart.value,
-    #   cart_id: @cart.id,
-    #   status: "Packed from warehouse."
-    # )
+    current_user.orders.create(
+      value: @cart.value,
+      status: 0,
+      cart_id: @cart.id,
+      inv_no: Order.inv_no,
+      address_id: params[:address_id]
+    )
     respond_to do |format|
         format.html { redirect_to home_url, notice: 'Yayy!! you have rented your books.' }
-        format.json { render :show, status: :created, location: @order }
+        # format.json { render :show, status: :created, location: @order }
     end
   end
 
@@ -84,10 +90,6 @@ class OrdersController < ApplicationController
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def checkout
-    @cart_books = @cart.cart_books
   end
 
   # DELETE /orders/1
@@ -111,6 +113,7 @@ class OrdersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+
     def order_params
       params.require(:order).permit(:user_id, :value, :status)
     end

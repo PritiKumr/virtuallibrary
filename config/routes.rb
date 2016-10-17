@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :authors
   resources :carts
   resources :plans
+  resources :addresses, only: [:new, :edit, :destroy]
   devise_for :users
   root to: 'books#home'
   resources :books do

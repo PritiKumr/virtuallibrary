@@ -144,6 +144,7 @@ img {
 
 .aa-browse-btn span {
   margin-left: 5px;
+  /*margin-bottom: 5px;*/
 }
 .aa-browse-btn:hover, .aa-browse-btn:focus {
   background-color: #fff;
@@ -443,10 +444,9 @@ img {
 
 #aa-header .aa-header-bottom .aa-header-bottom-area .aa-search-box {
   float: right;
-  margin-right: 5%;
   margin-top: 13px;
   position: relative;
-  width: 500px;
+  width: 700px;
 }
 #aa-header .aa-header-bottom .aa-header-bottom-area .aa-search-box input[type="text"] {
   border: 1px solid #ddd;
@@ -4391,6 +4391,7 @@ img {
   border: none;
   margin-bottom: 20px;
 }
+
 .aa-plans-tab li {
   border: none;
   float: none;
@@ -4641,4 +4642,83 @@ background-color: #d9edf7;
 border-color: #bce8f1;
 }
 
-/* Background images are set within the HTML using inline CSS, not here */
+
+/* Order Page */
+/*.order-display-block{
+  display: inline-block;
+}
+
+.order-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-bottom: 50px;
+
+}
+
+.order-table th{
+  border: none;
+  text-align: center;
+  padding: 8px;
+}
+
+.order-table td {
+    border: none;
+    text-align: center;
+    padding: 8px;
+
+}
+
+.order-table tr:nth-child(even){background-color: #f2f2f2}
+/* Background images are set within the HTML using inline CSS, not here */*/
+
+
+.order-body {
+  background-color: #fafafa;
+}
+
+.order-table {
+  color: #333;
+  font-family: sans-serif;
+  font-size: .9em;
+  font-weight: 300;
+  text-align: center;
+  line-height: 40px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 2px solid #ed1c40;
+  width: 90%;
+  margin: 50px auto;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.16);
+  border-radius: 2px;
+}
+
+.order-table thead tr:first-child {
+  background: #e40046;
+  color: #fff;
+  border: none;
+}
+
+.order-table th {
+  font-weight: bold;
+  text-align: center;
+}
+
+.order-table th, td{
+  padding: 0 15px 0 20px;
+}
+
+.order-table thead tr:last-child th {border-bottom: 3px solid #ddd;}
+
+.order-table tbody tr:hover {background-color: rgba(237,28,64,.1);}
+.order-table tbody tr:last-child td {border: none;}
+.order-table tbody td {border-bottom: 1px solid #ddd;}
+.small-btn{
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+
+.text-center{
+  text-align: center;
+}

@@ -36,8 +36,7 @@
   <!-- Start of menu section -->
     <%= render 'shared/menu' %>
   <!-- End of menu section -->
-  <section id="aa-catg-head-banner">
-   <%= image_tag("library.jpg", alt: "order page")%>
+  <!-- <section id="aa-catg-head-banner">   
    <div class="aa-catg-head-banner-area">
      <div class="container">
       <div class="aa-catg-head-banner-content">
@@ -49,7 +48,7 @@
       </div>
      </div>
    </div>
-  </section>
+  </section> -->
   <!-- / catg header banner section -->
   <!-- Cart view section -->
   <section id="checkout">
@@ -74,8 +73,8 @@
                               <%= form_tag(order_summary_path, method: :post) do %>
                                 <div class="col-md-5">
                                 <% current_user.addresses.each do |address| %>
-                                  <%= radio_button_tag(:address, address.id) %>
-                                  <%= label_tag(:address, address.title) %>
+                                  <%= radio_button_tag(:address_id, address.id) %>
+                                  <%= label_tag(:address_id, address.title) %>
                                   <br>
                                 <% end %>
                                 </div>
@@ -97,7 +96,7 @@
                           <div class="row">
                             <div class="col-md-12">
                               <div class="aa-delivery-addrs-btn">
-                                <%= link_to 'Add a new address', home_url, class: 'aa-browse-btn' %>
+                                <%= link_to 'Add a new address', new_address_path, class: 'aa-browse-btn' %>
                               </div>
                             </div>
                           </div>

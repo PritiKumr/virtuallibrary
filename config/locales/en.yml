@@ -42,6 +42,9 @@ en:
       successfully_added: "%{book} has been successfully added to your bookmark."
     destroy:
       successfully_removed: "%{book} has been successfully removed from your bookmark."
-  signin_message: "If you want to be a part of kitabiworm family,
-  kindly register with us and enjoy the fun of reading book. :) OR
-  if you are already part of this fun you can directly log in :D"
+    signin_message: "If you want to be a part of kitabiworm family,
+    kindly register with us and enjoy the fun of reading book. :) OR
+    if you are already part of this fun you can directly log in :D"
+    address:
+      destroy:
+        successfully_deleted: "Selected address has been successfully deleted."

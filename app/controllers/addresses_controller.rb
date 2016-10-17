@@ -7,7 +7,7 @@ class AddressesController < ApplicationController
 
   # GET /bookmarks/new
   def new
-    @bookmark = Bookmark.new
+    @address = Address.new
   end
 
   # GET /bookmarks/1/edit
@@ -20,7 +20,7 @@ class AddressesController < ApplicationController
     @address = current_user.addresses.new(user_id: current_user.id)
 
     respond_to do |format|
-      if @bookmark.save
+      if @address.save
         format.html {
           redirect_to @book,
           notice: t('.successfully_added', book: @book.name)
@@ -50,12 +50,11 @@ class AddressesController < ApplicationController
   # DELETE /bookmarks/1
   # DELETE /bookmarks/1.json
   def destroy
-    @book = @bookmark.book
-    @bookmark.destroy
+    @address.destroy
     respond_to do |format|
       format.html {
-        redirect_to @book,
-        notice: t('.successfully_removed', book: @book.name)
+        redirect_to home_url,
+        notice: t('.successfully_deleted')
       }
       format.json { head :no_content }
     end

@@ -55,7 +55,7 @@
                       <% @filename = "#{@categories[0].name}.jpg" %>
                       <%= image_tag(@filename, alt: "#{@categories[0].name} books") %>
                       <div class="aa-prom-content">
-                        <h4><%= link_to @categories[0].name, books_url %></a></h4>
+                        <h4><%= link_to @categories[0].name, books_url(category: @categories[0].id) %></a></h4>
                       </div>
                     </div>
                   </div>
@@ -70,7 +70,7 @@
                           <%= image_tag(@filename, alt: "#{category.name} books") %>
                           <div class="aa-prom-content">
                             <h4>
-                              <%= link_to category.name, books_url(category: category.name), { 'data-toggle': "tab"} %>
+                              <%= link_to category.name, books_url(category: category.id) %>
                             </h4>
                           </div>
                         </div>
@@ -154,10 +154,6 @@
                         </ul>
 
                       </div>
-                      <%= link_to books_url, class: "aa-browse-btn" do %>
-                        Browse all Product
-                        <span class="fa fa-long-arrow-right"></span>
-                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -240,7 +236,10 @@
                       </li>
                        <!-- start single product item -->
                     </ul>
-                     <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
+                    <%= link_to books_url, class: "aa-browse-btn" do %>
+                      Browse all Product
+                      <span class="fa fa-long-arrow-right"></span>
+                    <% end %>
                   </div>
                   <!-- / latest product category -->
                 </div>

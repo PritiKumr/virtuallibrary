@@ -10,8 +10,8 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     # TODO: If category is not present add a small error page specifically.
-    if params[:type].present?
-      category = Category.find(params[:type])
+    if params[:category].present?
+      category = Category.find(params[:category])
       @books = category.books.order(price: :asc)
     elsif params[:author].present?
       author = Author.find(params[:author])
@@ -97,7 +97,7 @@ class BooksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.    
+    # Use callbacks to share common setup or constraints between actions.
     def set_book
       @book = Book.find(params[:id])
     end

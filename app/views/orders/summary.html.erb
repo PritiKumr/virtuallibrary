@@ -37,20 +37,20 @@
     <%= render 'shared/menu' %>
   <!-- End of menu section -->
     <!-- catg header banner section -->
-    <section id="aa-catg-head-banner">
+    <!-- <section id="aa-catg-head-banner">
      <img src="images/library.jpg" alt="fashion img">
      <div class="aa-catg-head-banner-area">
        <div class="container">
         <div class="aa-catg-head-banner-content">
-          <h2>Cart Page</h2>
+          <h2>Order Summary</h2>
           <ol class="breadcrumb">
             <li><a href="index.html">Home</a></li>
-            <li class="active">Cart</li>
+            <li class="active">Order Summary</li>
           </ol>
         </div>
        </div>
      </div>
-    </section>
+    </section> -->
     <!-- / catg header banner section -->
    <% if @cart.present? %>
      <!-- Cart view section -->
@@ -95,8 +95,23 @@
                         <% end %>
                         <tr>
                           <td colspan="6" class="aa-cart-view-bottom">
-                            Delivering to this address
-
+                            Delievering to this address
+                            <div class="card">
+                              <%= image_tag google_map(center: @address.full_address) %>
+                              <div class="card-block">
+                                <h4 class="card-title"><%= @address.name.capitalize %></h4>
+                                <p class="card-text">
+                                  <%= @address.full_address %>,
+                                  <%= @address.city %> - <%= @address.pincode %>
+                                </p>
+                                <%= link_to edit_address_path(@address), class: "btn btn-success" do %>
+                                  Edit
+                                <% end %>
+                                <%= link_to select_shipping_address_path, class: "btn btn-danger" do %>
+                                  Change
+                                <% end %>
+                              </div>
+                            </div>
                           </td>
                         </tr>
                         </tbody>
@@ -117,26 +132,14 @@
                        </tr>
                      </tbody>
                    </table>
-                   <%= link_to 'Proced to Checkout', select_shipping_address_path, class: 'aa-browse-btn'  %>
+                   <%= link_to 'Place Order', cart_orders_path(@cart, address_id: @address.id), method: :post, class: 'aa-browse-btn'  %>
                  </div>
                </div>
              </div>
            </div>
          </div>
        </div>
-     </section>
-    <% else %>
-    <section id="cart-view">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="aa-empty-cart-area">
-              <h2 class="aa-empty-cart"> Your shopping <i class="fa fa-shopping-cart"></i> is empty ! </h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+     </section>    
     <% end %>
    <!-- / Cart view section -->
 <%= render 'shared/support' %>

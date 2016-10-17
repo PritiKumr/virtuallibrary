@@ -1,5 +1,6 @@
 class Cart < ApplicationRecord
   has_many :cart_books, dependent: :destroy
+  has_one :order
   belongs_to :user
   # Status 1 represents that cart has been successfully converted into order.
   # Status 0 represents that cart is still in pending process.

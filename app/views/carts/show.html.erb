@@ -37,8 +37,8 @@
     <%= render 'shared/menu' %>
   <!-- End of menu section -->
     <!-- catg header banner section -->
-    <section id="aa-catg-head-banner">
-     <%= image_tag("images/library.jpg", alt: "fashion img")%>
+    <!-- <section id="aa-catg-head-banner">
+
      <div class="aa-catg-head-banner-area">
        <div class="container">
         <div class="aa-catg-head-banner-content">
@@ -50,7 +50,7 @@
         </div>
        </div>
      </div>
-    </section>
+    </section> -->
     <!-- / catg header banner section -->
 
    <!-- Cart view section -->
@@ -60,7 +60,6 @@
          <div class="col-md-12">
            <div class="cart-view-area">
              <div class="cart-view-table">
-               <form action="">
                  <div class="table-responsive">
                     <table class="table">
                       <thead>
@@ -101,8 +100,7 @@
                         </tr>
                         </tbody>
                     </table>
-                  </div>
-               </form>
+                  </div>        
                <!-- Cart Total view -->
                <div class="cart-view-total">
                  <h4>Cart Totals</h4>
@@ -118,7 +116,7 @@
                      </tr>
                    </tbody>
                  </table>
-                 <%= link_to 'Proced to Checkout', order_checkout_path(@cart.id), class: 'aa-browse-btn'  %>
+                 <%= link_to 'Proced to Checkout', select_shipping_address_path, class: 'aa-browse-btn'  %>
                </div>
              </div>
            </div>
