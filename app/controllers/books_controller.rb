@@ -4,6 +4,9 @@ class BooksController < ApplicationController
   def home
     @books = Book.all
     @categories = Category.all
+    @featured_books = Book.featured
+    @latest_books = Book.latest
+    @popular_books = Book.limit(4)
   end
 
   # GET /books

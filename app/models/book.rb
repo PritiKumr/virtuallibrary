@@ -9,7 +9,9 @@ class Book < ApplicationRecord
   has_many :book_tags
   has_many :tags, through: :book_tags
   has_many :bookmarks
-  # scope -> :featured, where('.featured = ?', 1).limit(4)
+
+  scope :featured, -> {where(featured: 1).limit(4)}
+  scope :latest, -> {where('created_at > ?', Date.today-2).limit(4)}
 
   def author_name
     author.name
