@@ -30,7 +30,84 @@
     <%= render 'shared/menu' %>
     <!-- End of menu section -->
     <section id="aa-myprofile">
-      <div class="aa-myprofile-area">
-        <%= image_tag(current_user.avatar, alt: 'Your profile picture') %>
+      <div class="container">
+        <div class="row profile">
+      		<div class="col-md-3">
+      			<div class="profile-sidebar">
+              <div class="aa-myprofile-area">
+                <%= image_tag(current_user.avatar, alt: 'Your profile picture') %>
+              </div>
+      				<div class="profile-usertitle">
+      					<div class="profile-usertitle-name">
+      						<span class="hidden-xs">Hareesh Vudari</span>
+      					</div>
+      				</div>
+              <div class="profile-userinfo">
+                <div class="profile-usertitle-name">
+                  <small>
+                    <cite title="San Francisco, USA">
+                      San Francisco, USA <i class="glyphicon glyphicon-map-marker"></i>
+                    </cite>
+                  </small>
+                </div>
+              </div>
+              <div class="profile-userinfo">
+                <div class="profile-usertitle-name">
+                  <small>
+                    <i class="glyphicon glyphicon-envelope"></i>email@example.com
+                  </small>
+                </div>
+              </div>
+              <div class="profile-userinfo">
+                <div class="profile-usertitle-name">
+                  <small>
+                    <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+                  </small>
+                </div>
+              </div>
+
+      				<!-- END SIDEBAR USER TITLE -->
+      				<div class="profile-usermenu">
+      					<ul class="nav nav-tabs">
+      						<li class="active">
+                    <a href="#personl_info" data-toggle="tab">
+      							<i class="glyphicon glyphicon-home"></i>
+      							<span class="hidden-xs">Personal<span></a>
+      						</li>
+      						<li>
+      							<a href="#personal_addr" data-toggle="tab">
+      							<i class="glyphicon glyphicon-map-marker"></i>
+      							<span class="hidden-xs">Personal Address<span> </a>
+      						</li>
+      						<li>
+      							<a href="#">
+      							<i class="glyphicon glyphicon-ok"></i>
+      							<span class="hidden-xs">My Membership <span></a>
+      						</li>
+      						<li>
+      							<a href="#">
+      							<i class="glyphicon glyphicon-flag"></i>
+      							<span class="hidden-xs">Delivery Addresses<span></a>
+      						</li>
+      					</ul>
+      				</div>
+      			</div>
+      		</div>
+      		<div class="col-md-9 order-content">
+            <div class="tab-content">
+              <div class="tab-pane active" id="personal_info">
+                <h4 class="heading"><strong>Personal </strong> Info <span></span></h4>
+                I am here
+      	       </div>
+               <div class="tab-pane" id="personal_addr">
+                 <h4 class="heading"><strong>Personal </strong> Address <span></span></h4>
+                 I  am here too
+               </div>
+             </div>
+          </div>
+      	</div>
       </div>
     </section>
+    <%= render 'shared/support' %>
+    <%= render 'shared/subscribe' %>
+    <%= render 'shared/footer' %>

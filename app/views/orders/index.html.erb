@@ -55,6 +55,7 @@
                             <li><a href="#delievered" data-toggle="tab">Delievered</a></li>
                             <li><a href="#return_pending" data-toggle="tab">Return Pending</a></li>
                             <li><a href="#completed_orders" data-toggle="tab">Completed Orders</a></li>
+                            <li><a href="#canceled_orders" data-toggle="tab">Canceled Orders</a></li>
                          </ul>
                          <div class="tab-content">
                             <div class="tab-pane fade in active" id="pending">
@@ -81,14 +82,13 @@
                                             ₹<%= order.value %>
                                         </td>
                                         <td>
-                                            <%= local_time(order.created_at, "%B %e, %Y") %>
+                                            <%= local_time(order.created_at.localtime) %>
                                         </td>
-
                                         <td>
                                             <%= link_to order, class:'aa-browse-btn small-btn' do %>
                                               Show
                                             <% end %>
-                                            <%= link_to order, class:'aa-browse-btn' do %>
+                                            <%= link_to cancel_order_path(order), method: :post, class:'aa-browse-btn remove', data: { confirm: 'Are you sure you want to cancel this oreder ?' } do %>
                                               Cancel order
                                             <% end %>
                                         </td>
@@ -121,7 +121,7 @@
                                           ₹<%= order.value %>
                                       </td>
                                       <td>
-                                          ₹<%= order.delivery_date  %>
+                                          <%= local_time(order.delivery_date.localtime) %>
                                       </td>
                                       <td>
                                           <%= link_to 'Request for return', order %>
@@ -154,7 +154,7 @@
                                           ₹<%= order.value %>
                                       </td>
                                       <td>
-                                          ₹<%= order.return_date  %>
+                                          <%= local_time(order.return_date.localtime) %>
                                       </td>
                                       <td>
                                           <%= link_to 'Uprade your plan', order %>
@@ -188,13 +188,46 @@
                                           ₹<%= order.value %>
                                       </td>
                                       <td>
-                                          <%= order.created_at %>
+                                          <%= local_time(order.created_at.localtime) %>
                                       </td>
                                       <td>
-                                          <%= order.delivery_date %>
+                                          <%= local_time(order.delivery_date.localtime) %>
                                       </td>
                                       <td>
-                                          <%= order.return_on %>
+                                          <%= local_time(order.returned_on.localtime) %>
+                                      </td>
+                                    </tr>
+                                  <% end %>
+                                </table>
+                              </div>
+                            </div>
+                            <div class="tab-pane fade" id="canceled_orders">
+                              <div class="order-body">
+                                <table class="order-table">
+                                  <thead>
+                                    <tr>
+                                      <th colspan="5">Canceled Orders</th>
+                                    </tr>
+                                    <tr>
+                                      <th>Order No.</th>
+                                      <th>Amount</th>
+                                      <th>Inv. Date</th>
+                                      <th colspan="2">Canceled Date</th>
+                                    </tr>
+                                  </thead>
+                                  <% @canceled_orders.each do |order| %>
+                                    <tr>
+                                      <td>
+                                          #<%= order.inv_no %>
+                                      </td>
+                                      <td>
+                                          ₹<%= order.value %>
+                                      </td>
+                                      <td>
+                                          <%= local_time(order.created_at.localtime) %>
+                                      </td>
+                                      <td>
+                                          <%= local_time(order.canceled_date.localtime) %>
                                       </td>
                                     </tr>
                                   <% end %>
@@ -210,7 +243,7 @@
               </div>
             </div>
           </div>
-        </div>            
+        </div>
     </section>
     <%= render 'shared/support' %>
     <%= render 'shared/subscribe' %>

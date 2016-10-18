@@ -3,6 +3,7 @@ class Order < ApplicationRecord
   #  0 -> Pending not yet delivered.
   #  1 -> Delievered.
   #  2 -> Return date has come.
+  #  3 -> Canceled order.
   belongs_to :cart
   belongs_to :user
 
@@ -13,6 +14,7 @@ class Order < ApplicationRecord
   scope :delievered, -> {where(status: 1)}
   scope :return_pending, -> {where(status: 2)}
   scope :completed, -> {where(status: -1)}
+  scope :canceled, -> {where(status: 3)}
 
   def cart
     Cart.find_by(id: cart_id)
@@ -30,5 +32,6 @@ class Order < ApplicationRecord
       last_inv_no.to_i+1
     end
   end
+
 
 end

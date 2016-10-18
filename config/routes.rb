@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :wallets
   resources :bookmarks, only: [:destroy, :index]
   resources :subscribers, only: [:create, :new]
   resources :user_infos
@@ -33,4 +34,5 @@ Rails.application.routes.draw do
 
   get "/shipping_address" => "orders#select_shipping_address", as: 'select_shipping_address'
   post "/order_summary" => "orders#summary", as: 'order_summary'
+  post "/cancel_order/:id" => "orders#cancel", as: 'cancel_order'
 end

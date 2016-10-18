@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017060823) do
+ActiveRecord::Schema.define(version: 20161018155317) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "user_id"
@@ -123,11 +123,12 @@ ActiveRecord::Schema.define(version: 20161017060823) do
     t.integer  "cart_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.date     "delievery_date"
-    t.date     "return_date"
+    t.datetime "delievery_date"
+    t.datetime "return_date"
     t.string   "inv_no"
     t.integer  "address_id"
-    t.date     "returned_on"
+    t.datetime "returned_on"
+    t.datetime "canceled_date"
   end
 
   create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -209,6 +210,23 @@ ActiveRecord::Schema.define(version: 20161017060823) do
     t.datetime "updated_at",                             null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "wallet_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "wallet_id"
+    t.float    "debit",      limit: 24
+    t.float    "credit",     limit: 24
+    t.float    "balance",    limit: 24
+    t.text     "desc",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "wallets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "user_id"
+    t.float    "amount",     limit: 24
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
 end
