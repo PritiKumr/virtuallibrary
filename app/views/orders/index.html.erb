@@ -121,10 +121,12 @@
                                           ₹<%= order.value %>
                                       </td>
                                       <td>
-                                          <%= local_time(order.delivery_date.localtime) %>
-                                      </td>
+                                          <%= local_time(order.delievery_date.localtime) %>
+                                      </td>                                    
                                       <td>
-                                          <%= link_to 'Request for return', order %>
+                                        <%= link_to return_request_path(order), method: :post,  data: { confirm: "Are you sure you're done with this book ?" }, class:'aa-browse-btn small-btn' do %>
+                                          Return request
+                                        <% end %>
                                       </td>
                                     </tr>
                                   <% end %>

@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_one :sub_plan, through: :user_plan
   has_many :addresses
   has_many :bookmarks
+  has_many :return_requests
 
   def is_active?
     user_info.status?

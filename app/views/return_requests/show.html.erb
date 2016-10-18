@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @return_request.user_id %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @return_request.order_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @return_request.status %>
+</p>
+
+<%= link_to 'Edit', edit_return_request_path(@return_request) %> |
+<%= link_to 'Back', return_requests_path %>

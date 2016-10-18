@@ -6,6 +6,7 @@ class Order < ApplicationRecord
   #  3 -> Canceled order.
   belongs_to :cart
   belongs_to :user
+  has_one :return_request
 
   after_create :update_cart_status
 
