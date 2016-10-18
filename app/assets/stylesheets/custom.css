@@ -2749,6 +2749,10 @@ img {
   background-position: center center;
   background-size: cover;
 }
+
+.user-info-btn{
+  margin-top: 30px;
+}
 /*---- pincode form -----*/
 .aa-login-form input[type="number"]{
   border: 1px solid #ccc;
