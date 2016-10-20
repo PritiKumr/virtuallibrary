@@ -44,16 +44,6 @@
                     <%= f.text_field :first_name %>
                     <%= f.label :last_name %>
                     <%= f.text_field :last_name %>
-                    <%= f.label :address1 %>
-                    <%= f.text_field :address1, class:"aa-myaccount-textarea" %>
-                    <%= f.label :address2 %>
-                    <%= f.text_field :address2 %>
-                    <%= f.label :contact_no %>
-                    <%= f.number_field :contact_no %>
-                    <%= f.label :pincode %>
-                    <%= f.number_field :pincode %>
-                    <%= f.label :city %>
-                    <%= f.text_field :city %>
                     <%= f.label :gender %></br>
                     <%= label :female, 'Female' %>
                     <%= f.radio_button :gender, 'female', :checked => true %>
@@ -68,6 +58,8 @@
         </div>
       </div>
     </section>
-
-
   </body>
+  <%= render 'shared/support' %>
+  <%= render 'shared/subscribe' %>
+  <%= render 'shared/footer' %>
+</html>

@@ -37,8 +37,8 @@
     <%= render 'shared/menu' %>
   <!-- End of menu section -->
     <!-- catg header banner section -->
-    <section id="aa-catg-head-banner">
-     <%= image_tag("images/library.jpg", alt: "fashion img")%>
+    <!-- <section id="aa-catg-head-banner">
+
      <div class="aa-catg-head-banner-area">
        <div class="container">
         <div class="aa-catg-head-banner-content">
@@ -50,7 +50,7 @@
         </div>
        </div>
      </div>
-    </section>
+    </section> -->
     <!-- / catg header banner section -->
 
    <!-- Cart view section -->
@@ -60,14 +60,13 @@
          <div class="col-md-12">
            <div class="cart-view-area">
              <div class="cart-view-table">
-               <form action="">
                  <div class="table-responsive">
                     <table class="table">
                       <thead>
                         <tr>
                           <th></th>
                           <th></th>
-                          <th>Product</th>
+                          <th>Book</th>
                           <th>Price</th>
                         </tr>
                       </thead>
@@ -80,14 +79,12 @@
                               <% end %>
                             </td>
                             <td>
-                              <a href="#">
-                                <%= image_tag(cart_book.book.front_image, alt: "#{cart_book.book.name} image") %>
-                              </a>
+                              <%= image_tag(cart_book.book.front_image, alt: "#{cart_book.book.name} image") %>
                             </td>
                             <td>
-                              <a class="aa-cart-title" href="#">
-                                <%= cart_book.book.name %>
-                              </a> by <%= cart_book.book.author_name %>
+                              <%= link_to cart_book.book, class: 'aa-cart-title' do %>
+                                <%= cart_book.book.name %> by <%= cart_book.book.author_name %>
+                              <% end %>
                             </td>
                             <td>₹ <%= cart_book.price %></td>
                             <!-- <td><input class="aa-cart-quantity" type="number" value="1"></td> -->
@@ -102,7 +99,6 @@
                         </tbody>
                     </table>
                   </div>
-               </form>
                <!-- Cart Total view -->
                <div class="cart-view-total">
                  <h4>Cart Totals</h4>
@@ -116,9 +112,13 @@
                        <th>Total</th>
                        <td>₹ <%= @cart.value %></td>
                      </tr>
+                     <tr>
+                       <th>Amount to be paid</th>
+                       <td>₹ <%= current_user.wallet.amount_to_be_paid(@cart.value) %></td>
+                     </tr>
                    </tbody>
                  </table>
-                 <%= link_to 'Proced to Checkout', cart_orders_path(@cart), method: :post,class: 'aa-browse-btn'  %>
+                 <%= link_to 'Proced to Checkout', select_shipping_address_path, class: 'aa-browse-btn'  %>
                </div>
              </div>
            </div>

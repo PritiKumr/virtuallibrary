@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161002104627) do
+ActiveRecord::Schema.define(version: 20161019220933) do
+
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "user_id"
+    t.string   "company_name"
+    t.string   "contact_no"
+    t.text     "full_address",  limit: 65535
+    t.string   "house_no"
+    t.string   "city"
+    t.string   "district"
+    t.string   "pincode"
+    t.float    "longitude",     limit: 24
+    t.float    "latitude",      limit: 24
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.boolean  "personal_addr"
+  end
 
   create_table "authors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
@@ -51,6 +69,20 @@ ActiveRecord::Schema.define(version: 20161002104627) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "book_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "book_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bookmarks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "sku"
     t.string   "name"
@@ -60,6 +92,7 @@ ActiveRecord::Schema.define(version: 20161002104627) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.boolean  "featured"
+    t.float    "rent_price",     limit: 24
   end
 
   create_table "cart_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -89,10 +122,15 @@ ActiveRecord::Schema.define(version: 20161002104627) do
     t.integer  "value"
     t.integer  "status"
     t.integer  "cart_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.date     "delievery_date"
-    t.date     "return_date"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.datetime "delievery_date"
+    t.datetime "return_date"
+    t.string   "inv_no"
+    t.integer  "address_id"
+    t.datetime "returned_on"
+    t.datetime "canceled_date"
+    t.float    "paid_amt",       limit: 24
   end
 
   create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -103,6 +141,14 @@ ActiveRecord::Schema.define(version: 20161002104627) do
 
   create_table "publications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "return_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "user_id"
+    t.integer  "order_id"
+    t.boolean  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -121,6 +167,12 @@ ActiveRecord::Schema.define(version: 20161002104627) do
 
   create_table "subscribers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -168,6 +220,23 @@ ActiveRecord::Schema.define(version: 20161002104627) do
     t.datetime "updated_at",                             null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "wallet_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "wallet_id"
+    t.float    "debit",      limit: 24
+    t.float    "credit",     limit: 24
+    t.float    "balance",    limit: 24
+    t.text     "desc",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "wallets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer  "user_id"
+    t.float    "amount",     limit: 24
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
 end

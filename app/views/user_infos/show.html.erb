@@ -30,7 +30,283 @@
     <%= render 'shared/menu' %>
     <!-- End of menu section -->
     <section id="aa-myprofile">
-      <div class="aa-myprofile-area">
-        <%= image_tag(current_user.avatar, alt: 'Your profile picture') %>
-      </div>
+      <div class="container">
+        <div class="row profile">
+      		<div class="col-md-3">
+      			<div class="profile-sidebar">
+              <div class="aa-myprofile-area">
+                <%= image_tag(current_user.avatar, alt: 'Your profile picture') %>
+              </div>
+      				<div class="profile-usertitle">
+      					<div class="profile-usertitle-name">
+      						<span class="hidden-xs">Hareesh Vudari</span>
+      					</div>
+      				</div>
+              <div class="profile-userinfo">
+                <div class="profile-usertitle-name">
+                  <small>
+                    <cite title="San Francisco, USA">
+                      San Francisco, USA <i class="glyphicon glyphicon-map-marker"></i>
+                    </cite>
+                  </small>
+                </div>
+              </div>
+              <div class="profile-userinfo">
+                <div class="profile-usertitle-name">
+                  <small>
+                    <i class="glyphicon glyphicon-envelope"></i>email@example.com
+                  </small>
+                </div>
+              </div>
+              <div class="profile-userinfo">
+                <div class="profile-usertitle-name">
+                  <small>
+                    <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+                  </small>
+                </div>
+              </div>
+      				<!-- END SIDEBAR USER TITLE -->
+      				<div class="profile-usermenu">
+      					<ul class="nav">
+      						<li class="active">
+                    <a href="#info" data-toggle="tab">
+      							<i class="glyphicon glyphicon-user"></i>
+      							<span>Personal<span></a>
+      						</li>
+      						<li>
+      							<a href="#personal_addr" data-toggle="tab">
+      							<i class="glyphicon glyphicon-home"></i>
+      							<span>Personal Address<span> </a>
+      						</li>
+      						<li>
+      							<a href="#plans" data-toggle="tab">
+      							<i class="fa glyphicon-ok"></i>
+      							<span>My Membership <span></a>
+      						</li>
+      						<li>
+      							<a href="#address" data-toggle="tab">
+      							<i class="glyphicon glyphicon-map-marker"></i>
+      							<span>Delivery Addresses<span></a>
+      						</li>
+      					</ul>
+      				</div>
+      			</div>
+      		</div>
+      		<div class="col-md-9 order-content">
+            <div class="tab-content">
+              <div class="tab-pane active" id="info">
+                <h4 class="heading"><strong>Personal </strong> Info <span></span></h4>
+                <div class="aa-myaccount-area">
+                  <div class="aa-myaccount-login">
+                    <div class="aa-login-form">
+                      <%= form_tag(user_info_path, method: :patch) do %>
+                       <div class="row">
+                          <div class="col-md-6">
+                            <div class="aa-checkout-single-bill">
+                              <%= text_field_tag "user_info[first_name]", @user_info.first_name, placeholder: 'First Name*', required: true %>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="aa-checkout-single-bill">
+                              <%= text_field_tag "user_info[last_name]", @user_info.last_name, placeholder: 'Last Name' %>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="aa-checkout-single-bill">
+                              <%= text_field_tag "user_info[email]", @user_info.user.email, placeholder: 'Email Address' %>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="aa-checkout-single-bill">
+                              <label>Gender</label>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="aa-checkout-single-bill">
+                              <label>Male</label>
+                              <%= radio_button_tag "user_info[gender]", :male, checked: (@user_info.gender == "male") %>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="aa-checkout-single-bill">
+                              <label>Female</label>
+                              <%= radio_button_tag "user_info[gender]", :female, checked: (@user_info.gender == "female") %>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="aa-checkout-single-bill">
+                              <label> Upload your avatar </label>
+                              <%= file_field_tag "user_info[avatar]", class: 'aa-browse-btn' %>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row user-info-btn">
+                          <div class="col-md-3">
+                            <%= submit_tag 'Update Info', class: 'aa-browse-btn' %>
+                          </div>
+                        </div>
+                     <% end %>
+                    </div>
+                 </div>
+               </div>
+      	       </div>
+               <div class="tab-pane" id="personal_addr">
+                 <h4 class="heading"><strong>Personal </strong> Address <span></span></h4>
+                 <div class="aa-myaccount-area">
+                   <div class="aa-myaccount-login">
+                     <div class="aa-login-form">
+                   <%= form_tag(order_summary_path, method: :post) do %>
+                    <div class="row">
+                       <div class="col-md-6">
+                         <div class="aa-checkout-single-bill">
+                           <%= text_field_tag "address[first_name]", "", placeholder: 'First Name*', required: true %>
+                         </div>
+                       </div>
+                       <div class="col-md-6">
+                         <div class="aa-checkout-single-bill">
+                           <%= text_field_tag "address[last_name]", "", placeholder: 'Last Name' %>
+                         </div>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col-md-12">
+                         <div class="aa-checkout-single-bill">
+                           <%= text_field_tag "address[company_name]", "", placeholder: 'Company Name' %>
+                         </div>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col-md-6">
+                         <div class="aa-checkout-single-bill">
+                           <%= text_field_tag "address[contact_no]", "", placeholder: 'Contact Number*' %>
+                         </div>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col-md-12">
+                         <div class="aa-checkout-single-bill">
+                           <textarea cols="8" rows="3" name="address[full_address]" placeholder="Address*"></textarea>
+                         </div>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col-md-6">
+                         <div class="aa-checkout-single-bill">
+                           <%= text_field_tag "address[house_no]", "", placeholder: 'Appartment, Suite etc.' %>
+                         </div>
+                       </div>
+                       <div class="col-md-6">
+                         <div class="aa-checkout-single-bill">
+                           <%= text_field_tag "address[city]", "", placeholder: "City / Town" %>
+                         </div>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col-md-6">
+                         <div class="aa-checkout-single-bill">
+                           <%= text_field_tag "address[district]", "", placeholder: "District*", required: true %>
+                         </div>
+                       </div>
+                       <div class="col-md-6">
+                         <div class="aa-checkout-single-bill">
+                           <%= text_field_tag "address[pincode]", "", placeholder: "Pincode / ZIP*", required: true %>
+                         </div>
+                       </div>
+                     </div>
+                     <div class="user-info-btn">
+                       <%= submit_tag 'Add this Address', class: 'aa-browse-btn' %>
+                     </div>
+                   <% end %>
+                 </div>
+               </div>
+               </div>
+             </div>
+               <div class="tab-pane" id="plans">
+                 <h4 class="heading"><strong>Membership </strong> plans <span></span></h4>
+                 I  am here in Plans
+               </div>
+               <div class="tab-pane" id="address">
+                 <h4 class="heading"><strong>Delivery </strong>  Addresses <span></span></h4>
+                 <div class="aa-myaccount-area">
+                   <div class="aa-myaccount-login">
+                     <div class="aa-login-form">
+                       <%= form_tag(order_summary_path, method: :post) do %>
+                        <div class="row">
+                           <div class="col-md-6">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[first_name]", "", placeholder: 'First Name*', required: true %>
+                             </div>
+                           </div>
+                           <div class="col-md-6">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[last_name]", "", placeholder: 'Last Name' %>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="row">
+                           <div class="col-md-12">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[company_name]", "", placeholder: 'Company Name' %>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="row">
+                           <div class="col-md-6">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[contact_no]", "", placeholder: 'Contact Number*' %>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="row">
+                           <div class="col-md-12">
+                             <div class="aa-checkout-single-bill">
+                               <textarea cols="12" rows="3" name="address[full_address]" placeholder="Address*"></textarea>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="row">
+                           <div class="col-md-6">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[house_no]", "", placeholder: 'Appartment, Suite etc.' %>
+                             </div>
+                           </div>
+                           <div class="col-md-6">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[city]", "", placeholder: "City / Town" %>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="row">
+                           <div class="col-md-6">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[district]", "", placeholder: "District*", required: true %>
+                             </div>
+                           </div>
+                           <div class="col-md-6">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[pincode]", "", placeholder: "Pincode / ZIP*", required: true %>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="aa-delivery-addrs-btn">
+                           <%= submit_tag 'Deliver to this address', class: 'aa-browse-btn' %>
+                         </div>
+                      <% end %>
+                     </div>
+                  </div>
+                </div>
+             </div>
+           </div>
+        </div>
+    	</div>
+    </div>
     </section>
+    <%= render 'shared/support' %>
+    <%= render 'shared/subscribe' %>
+    <%= render 'shared/footer' %>

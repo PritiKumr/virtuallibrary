@@ -30,10 +30,17 @@ en:
       from our warehouse. It will be delievered in next 1-2 working days. :D"
   carts:
     check_membership:
-      no_membership: "Sorry! You still haven't selected the best plans for you."
+      no_membership: "Sorry! You still haven't selected the best plans for you. Kindly select a plan for you and keep alive your passion for reading :)"
       membership_expired: "Sorry! Your membership has been expired lately. But
-      nothing to worry, kindly renew with us, and keep enojoying our book services :)"
-      membership_extended: "Sorry! The book you have selected doesn't seems to come under your subscribed plan.
-      Kindly upgrade your plan and don't miss your faviourte books. :)"
-      max_price_reached: "Sorry! It seems that your cart has already reached the
-      maximum price of books, according to your subscribed plan."
+      nothing to worry, kindly renew with us, and keep reading :)"      
+  bookmarks:
+    create:
+      successfully_added: "%{book} has been successfully added to your bookmark."
+    destroy:
+      successfully_removed: "%{book} has been successfully removed from your bookmark."
+    signin_message: "If you want to be a part of kitabiworm family,
+    kindly register with us and enjoy the fun of reading book. :) OR
+    if you are already part of this fun you can directly log in :D"
+    address:
+      destroy:
+        successfully_deleted: "Selected address has been successfully deleted."

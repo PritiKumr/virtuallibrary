@@ -27,7 +27,26 @@
 
 jQuery(function($){
 
+  $('#contact_no').click(function(){
+    var val = ('#contact_no').value
+      if (/^\d{10}$/.test(val)) {
+          // value is ok, use it
+      } else {
+          alert("Invalid number; must be ten digits")
+          number.focus()
+          return false
+    }
+  });
 
+
+      $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+          e.preventDefault();
+          $(this).siblings('a.active').removeClass("active");
+          $(this).addClass("active");
+          var index = $(this).index();
+          $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+          $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+      });
   /* ----------------------------------------------------------- */
   /*  1. CARTBOX
   /* ----------------------------------------------------------- */

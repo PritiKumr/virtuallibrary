@@ -3,7 +3,9 @@
     <a class="aa-product-img" href="#">
       <%= image_tag(book.front_image, alt: "#{book.name} image") %>
     </a>
-    <a class="aa-add-card-btn"href="#"><span class="fa fa-book"></span>Add To Library</a>
+    <%= link_to book_carts_path(book), method: :post, class: "aa-add-card-btn" do %>
+      <span class="fa fa-book"></span>Rent Now</a>
+    <% end %>    
       <figcaption>
         <h4 class="aa-product-title">
           <%= link_to book.name, book %>
@@ -20,7 +22,21 @@
     </figcaption>
   </figure>
   <div class="aa-product-hvr-content">
-    <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Bookmark"><span class="fa fa-bookmark"></span></a>
-    <!-- <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a> -->
+    <% if user_signed_in? %>
+      <% if current_user.bookmark_selected?(book.id) %>
+        <% @bookmark = book.bookmark(current_user.id) %>
+        <%= link_to bookmark_path(@bookmark), method: :post, "data-toggle": "tooltip", "data-placement":"top", title: "Remove from Bookmark", class: 'aa-bookmark-selected'  do %>
+          <span class="fa fa-bookmark"></span>
+        <% end %>
+      <% else %>
+        <%= link_to book_bookmarks_path(book), method: :post, "data-toggle": "tooltip", "data-placement":"bottom", title: "Add to Bookmark"  do %>
+          <span class="fa fa-bookmark"></span>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= link_to book_bookmarks_path(book), method: :post, "data-toggle": "tooltip", "data-placement":"bottom", title: "Add to Bookmark"  do %>
+        <span class="fa fa-bookmark"></span>
+      <% end %>
+    <% end %>
   </div>
 </li>

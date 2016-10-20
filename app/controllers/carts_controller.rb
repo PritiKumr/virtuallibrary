@@ -11,14 +11,14 @@ class CartsController < ApplicationController
   # GET /carts.json
   def index
     @cart = current_user.carts.active
-    @cart_books = @cart.cart_books
+    @cart_books = @cart.cart_books if @cart.present?
   end
 
   # GET /carts/1
   # GET /carts/1.json
   def show
     @cart = current_user.carts.active
-    @cart_books = @cart.cart_books
+    @cart_books = @cart.cart_books if @cart.present?
   end
 
   # GET /carts/new
@@ -35,7 +35,7 @@ class CartsController < ApplicationController
   def create
     @cart = Cart.update_cart({book_id: @book.id, user_id: current_user.id})
     respond_to do |format|
-      format.html {redirect_to @cart, notice: 'You have successfully rented this book.'}
+      format.html {redirect_to @cart, notice: "You have successfully added #{@book.name} to cart."}
       # if @cart.save
       #   format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
       #   format.json { render :show, status: :created, location: @cart }
@@ -71,9 +71,10 @@ class CartsController < ApplicationController
   end
 
   def destroy_cart_book
+    @book_name = @cart_book.book.name
     @cart_book.destroy
     respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Book was successfully removed.' }
+      format.html { redirect_to carts_url, notice: "#{@book_name} was successfully removed from cart." }
       format.json { head :no_content }
     end
   end
@@ -84,11 +85,8 @@ class CartsController < ApplicationController
     def check_signin
       if !user_signed_in?
         respond_to do |format|
-          message = 'If you want to be a part of our family,
-          kindly register with us and enjoy the fun of joint family. :) OR
-          if you are already part of this fun you can directly log in :D'
           format.html{
-            redirect_to new_user_session_path, notice: message
+            redirect_to new_user_session_path, notice: t('signin_message')
           }
         end
       end
@@ -110,19 +108,13 @@ class CartsController < ApplicationController
       if current_user.sub_plan.nil?
         respond_to do |format|
           format.html {
-            redirect_to @book, notice: t('carts.check_membership.no_membership')
+            redirect_to plans_url, notice: t('carts.check_membership.no_membership')
           }
         end
       elsif current_user.membership_expired?
         respond_to do |format|
           format.html {
-            redirect_to @book, notice: t('carts.check_membership.membership_expired')
-          }
-        end
-      elsif current_user.membership_extended?(@book)
-        respond_to do |format|
-          format.html {
-            redirect_to @book, notice: t('carts.check_membership.membership_extended')
+            redirect_to plans_url, notice: t('carts.check_membership.membership_expired')
           }
         end
       end

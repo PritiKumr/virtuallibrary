@@ -55,7 +55,7 @@
                       <% @filename = "#{@categories[0].name}.jpg" %>
                       <%= image_tag(@filename, alt: "#{@categories[0].name} books") %>
                       <div class="aa-prom-content">
-                        <h4><%= link_to @categories[0].name, books_url %></a></h4>
+                        <h4><%= link_to @categories[0].name, books_url(category: @categories[0].id) %></a></h4>
                       </div>
                     </div>
                   </div>
@@ -70,7 +70,7 @@
                           <%= image_tag(@filename, alt: "#{category.name} books") %>
                           <div class="aa-prom-content">
                             <h4>
-                              <%= link_to category.name, books_url(category: category.name), { 'data-toggle': "tab"} %>
+                              <%= link_to category.name, books_url(category: category.id) %>
                             </h4>
                           </div>
                         </div>
@@ -154,10 +154,6 @@
                         </ul>
 
                       </div>
-                      <%= link_to books_url, class: "aa-browse-btn" do %>
-                        Browse all Product
-                        <span class="fa fa-long-arrow-right"></span>
-                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -185,62 +181,27 @@
                   <!-- Start men popular category -->
                   <div class="tab-pane fade in active" id="popular">
                     <ul class="aa-product-catg aa-popular-slider">
-
+                      <%= render partial: 'book', collection: @popular_books, locals: {home: true} %>
                     </ul>
-                    <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
+                    <a class="aa-browse-btn" href="/books">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
                   </div>
                   <!-- / popular product category -->
 
                   <!-- start featured product category -->
                   <div class="tab-pane fade" id="featured">
-                   <ul class="aa-product-catg aa-featured-slider">
-                      <!-- start single product item -->
-                      <li>
-                        <figure>
-                          <a class="aa-product-img" href="#"><img src="" alt="polo shirt img"></a>
-                          <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                           <figcaption>
-                            <h4 class="aa-product-title"><a href="#">Polo T-Shirt</a></h4>
-                            <span class="aa-product-price">$45.50</span><span class="aa-product-price"><del>$65.50</del></span>
-                          </figcaption>
-                        </figure>
-                        <div class="aa-product-hvr-content">
-                          <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
-                          <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-                          <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
-                        </div>
-                        <!-- product badge -->
-                        <span class="aa-badge aa-sale" href="#">SALE!</span>
-                      </li>
+                    <ul class="aa-product-catg aa-featured-slider">
+                      <%= render partial: 'book', collection: @featured_books, locals: {home: true} %>
                     </ul>
-                    <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
+                    <a class="aa-browse-btn" href="/books">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
                   </div>
                   <!-- / featured product category -->
 
                   <!-- start latest product category -->
                   <div class="tab-pane fade" id="latest">
                     <ul class="aa-product-catg aa-latest-slider">
-                      <!-- start single product item -->
-                      <li>
-                        <figure>
-                          <a class="aa-product-img" href="#"><img src="" alt="polo shirt img"></a>
-                          <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
-                           <figcaption>
-                            <h4 class="aa-product-title"><a href="#">Polo T-Shirt</a></h4>
-                            <span class="aa-product-price">$45.50</span><span class="aa-product-price"><del>$65.50</del></span>
-                          </figcaption>
-                        </figure>
-                        <div class="aa-product-hvr-content">
-                          <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
-                          <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-                          <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
-                        </div>
-                        <!-- product badge -->
-                        <span class="aa-badge aa-sale" href="#">SALE!</span>
-                      </li>
-                       <!-- start single product item -->
+                      <%= render partial: 'book', collection: @latest_books, locals: {home: true} %>
                     </ul>
-                     <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
+                    <a class="aa-browse-btn" href="/books">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
                   </div>
                   <!-- / latest product category -->
                 </div>
@@ -254,5 +215,4 @@
     <%= render 'shared/support' %>
     <%= render 'shared/subscribe' %>
     <%= render 'shared/footer' %>
-  </body>
 </html>

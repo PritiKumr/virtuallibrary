@@ -4,11 +4,22 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_one :wallet
+
   has_many :orders
   has_one :user_info
   has_many :carts
   has_one :user_plan
   has_one :sub_plan, through: :user_plan
+  has_many :addresses
+  has_many :bookmarks
+  has_many :return_requests
+
+  after_create :initialize_wallet
+
+  def initialize_wallet
+    self.create_wallet(amount: 0)
+  end
 
   def is_active?
     user_info.status?
@@ -38,40 +49,48 @@ class User < ApplicationRecord
     end
   end
 
-  def active_cart_value
-    carts.active.value
-  end
+  # def active_cart_value
+  #   carts.active.value
+  # end
 
-  def active_order_value
-    orders.active.sum(:value)
-  end
+  # def active_order_value
+  #   orders.active.sum(:value)
+  # end
 
-  def valid_book_price?
-    max_price_reached? || membership_expired?
-  end
-
-  def max_price_reached?
-    active_order_value >= sub_plan.max_price || active_cart_value >= sub_plan.max_price
-  end
+  # def valid_book_price?
+  #   max_price_reached? || membership_expired?
+  # end
+  #
+  # def max_price_reached?
+  #   active_order_value >= sub_plan.max_price || active_cart_value >= sub_plan.max_price
+  # end
 
   def membership_expired?
     user_plan.expiry_date == Date.today
   end
 
-  def membership_extended?(book)
-    book.price > sub_plan.max_price
-  end
+  # def membership_extended?(book)
+  #   book.price > sub_plan.max_price
+  # end
 
   def name
-    "#{user_info.first_name} #{user_info.last_name}"
-  end
-
-  def address
-    "#{user_info.address1}, #{user_info.address2}, #{user_info.pincode}, #{user_info.city}"
+    if user_info.present?
+      if user_info.first_name.present? && user_info.last_name.present?
+        "#{user_info.first_name} #{user_info.last_name}".capitalize
+      elsif user_info.first_name.present?
+        "#{user_info.first_name}".capitalize
+      end
+    else
+      email.split('@')[0].capitalize
+    end
   end
 
   def avatar
     user_info.avatar.url
+  end
+
+  def bookmark_selected?(book_id)
+    bookmarks.pluck(:book_id).include?(book_id)
   end
 
 end

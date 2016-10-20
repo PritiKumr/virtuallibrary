@@ -45,7 +45,7 @@
                 <div class="aa-plan-inner">
                   <ul class="nav nav-tabs aa-plans-tab">
                      <li class="active"><a href="#limited" data-toggle="tab">Limited</a></li>
-                     <li><a href="#unlimited" data-toggle="tab">UnLimited</a></li>
+                     <li><a href="#unlimited" data-toggle="tab">Unlimited</a></li>
                   </ul>
                   <div class="tab-content">
                     <div class="tab-pane fade in active" id="limited">
@@ -71,13 +71,10 @@
                                       <ul class="list-group text-center">
                                           <li class="list-group-item">
                                             <i class="fa fa-money"></i>
-                                            Security deposit <%= subplan.security %>
+                                            Security deposit is 50% of the M.R.P
                                           </li>
                                           <li class="list-group-item">
                                             <i class="fa fa-book"></i>Total books <%= subplan.max_book %>
-                                          </li>
-                                          <li class="list-group-item">
-                                            Maximum price ₹<%= subplan.max_price.to_i %>
                                           </li>
                                       </ul>
                                       <div class="plan-footer">
@@ -91,42 +88,7 @@
                         <% end %>
                       </div>
                       <div class="tab-pane fade" id="unlimited">
-                        <% @plans.each do |plan| %>
-                          <div class ="row">
-                            <div class="col-md-12 text-center">
-                              <h3><%= plan.name.upcase %></h3>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <% subplan = plan.sub_plans[3] %>
-                            <div class="col-md-4 col-md-offset-4 text-center">
-                              <div class="plan plan-danger plan-pricing">
-                                <div class="plan-heading">
-                                    <i class="fa fa-book"></i>
-                                    <h3><%= subplan.name.capitalize %></h3>
-                                </div>
-                                <div class="plan-body text-center">
-                                    <p><strong>₹<%= subplan.fee.to_i %></strong></p>
-                                </div>
-                                <ul class="list-group text-center">
-                                    <li class="list-group-item">
-                                      <i class="fa fa-money"></i>
-                                      No Security deposit
-                                    </li>
-                                    <li class="list-group-item">
-                                      <i class="fa fa-book"></i> Unlimited
-                                    </li>
-                                    <li class="list-group-item">
-                                      Maximum price ₹<%= subplan.max_price.to_i %>
-                                    </li>
-                                </ul>
-                                <div class="plan-footer">
-                                    <%= link_to 'BUY NOW!', select_plan_path(subplan), class:"aa-browse-btn", method: :post %>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        <% end %>
+                        <h2 class="aa-empty-cart"> Coming Soon.. <i class="fa fa-books"></i></h3>
                       </div>
                     </div>
                   </div>

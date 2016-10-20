@@ -4,21 +4,28 @@ class BooksController < ApplicationController
   def home
     @books = Book.all
     @categories = Category.all
+    @featured_books = Book.featured
+    @latest_books = Book.latest
+    @popular_books = Book.limit(4)
   end
 
   # GET /books
   # GET /books.json
   def index
     # TODO: If category is not present add a small error page specifically.
-    if params[:type].present?
-      category = Category.find(params[:type])
-      @books = category.books
+    if params[:category].present?
+      category = Category.find(params[:category])
+      @books = category.books.order(price: :asc)
     elsif params[:author].present?
       author = Author.find(params[:author])
-      @books = author.books
+      @books = author.books.order(price: :asc)
+    elsif params[:tag].present?
+      tag = Tag.find(params[:tag])
+      @books = tag.books.order(price: :asc)
     else
       @books = Book.order(price: :asc)
     end
+    @tags = Tag.all
     @categories = Category.all
     @authors = Author.all
   end

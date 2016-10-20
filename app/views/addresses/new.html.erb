@@ -1,0 +1,134 @@
+<!-- New Shipping Address -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Book Store | Home</title>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'> -->
+
+  </head>
+  <body>
+   <!-- wpf loader Two -->
+    <!-- <div id="wpf-loader-two">
+      <div class="wpf-loader-two-inner">
+        <span>Loading</span>
+      </div>
+    </div> -->
+    <!-- / wpf loader Two -->
+  <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+  <!-- END SCROLL TOP BUTTON -->
+  <!-- Start header section -->
+    <%= render 'shared/header' %>
+  <!-- End of header section -->
+  <!-- Start of menu section -->
+    <%= render 'shared/menu' %>
+  <!-- End of menu section -->
+  
+  <!-- / catg header banner section -->
+  <!-- Cart view section -->
+  <section id="checkout">
+    <div class="container">
+      <div class="checkout-area">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="checkout-left">
+              <div class="panel-group" id="accordion">
+                <div class="panel panel-default aa-checkout-billaddress">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                         Add New Shippping Address
+                       </a>
+                     </h4>
+                   </div>
+                   <div id="collapseOne" class="panel-collapse collapse in">
+                     <div class="panel-body">
+                       <%= form_tag(order_summary_path, method: :post) do %>
+                        <div class="row">
+                           <div class="col-md-6">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[first_name]", "", placeholder: 'First Name*', required: true %>
+                             </div>
+                           </div>
+                           <div class="col-md-6">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[last_name]", "", placeholder: 'Last Name' %>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="row">
+                           <div class="col-md-12">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[company_name]", "", placeholder: 'Company Name' %>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="row">
+                           <div class="col-md-6">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[contact_no]", "", placeholder: 'Contact Number*' %>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="row">
+                           <div class="col-md-12">
+                             <div class="aa-checkout-single-bill">
+                               <textarea cols="8" rows="3" name="address[full_address]" placeholder="Address*"></textarea>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="row">
+                           <div class="col-md-6">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[house_no]", "", placeholder: 'Appartment, Suite etc.' %>
+                             </div>
+                           </div>
+                           <div class="col-md-6">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[city]", "", placeholder: "City / Town" %>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="row">
+                           <div class="col-md-6">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[district]", "", placeholder: "District*", required: true %>
+                             </div>
+                           </div>
+                           <div class="col-md-6">
+                             <div class="aa-checkout-single-bill">
+                               <%= text_field_tag "address[pincode]", "", placeholder: "Pincode / ZIP*", required: true %>
+                             </div>
+                           </div>
+                         </div>
+                         <div class="aa-delivery-addrs-btn">
+                           <%= submit_tag 'Deliver to this address', class: 'aa-browse-btn' %>
+                         </div>
+                       <% end %>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <%= render 'shared/support' %>
+  <%= render 'shared/subscribe' %>
+  <%= render 'shared/footer' %>
