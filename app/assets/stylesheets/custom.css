@@ -4630,37 +4630,6 @@ color: inherit;
 }
 
 
-/* Order Page */
-/*.order-display-block{
-  display: inline-block;
-}
-
-.order-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin-left: 6px;
-    margin-right: 6px;
-    margin-bottom: 50px;
-
-}
-
-.order-table th{
-  border: none;
-  text-align: center;
-  padding: 8px;
-}
-
-.order-table td {
-    border: none;
-    text-align: center;
-    padding: 8px;
-
-}
-
-.order-table tr:nth-child(even){background-color: #f2f2f2}
-/* Background images are set within the HTML using inline CSS, not here */*/
-
-
 .order-body {
   background-color: #fafafa;
 }
