@@ -79,7 +79,7 @@
                               <% end %>
                             </td>
                             <td>
-                              <%= image_tag(cart_book.book.front_image, alt: "#{cart_book.book.name} image") %>                              
+                              <%= image_tag(cart_book.book.front_image, alt: "#{cart_book.book.name} image") %>
                             </td>
                             <td>
                               <%= link_to cart_book.book, class: 'aa-cart-title' do %>
@@ -111,6 +111,10 @@
                      <tr>
                        <th>Total</th>
                        <td>₹ <%= @cart.value %></td>
+                     </tr>
+                     <tr>
+                       <th>Amount to be paid</th>
+                       <td>₹ <%= current_user.wallet.amount_to_be_paid(@cart.value) %></td>
                      </tr>
                    </tbody>
                  </table>

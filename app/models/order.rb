@@ -10,7 +10,7 @@ class Order < ApplicationRecord
 
   after_create :update_cart_status
 
-  scope :active, -> {where.not(status: -1)}
+  scope :active, -> {where('status != ? && status != ?', -1, 3)}
   scope :pending, -> {where(status: 0)}
   scope :delievered, -> {where(status: 1)}
   scope :return_pending, -> {where(status: 2)}

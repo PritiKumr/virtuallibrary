@@ -108,19 +108,13 @@ class CartsController < ApplicationController
       if current_user.sub_plan.nil?
         respond_to do |format|
           format.html {
-            redirect_to @book, notice: t('carts.check_membership.no_membership')
+            redirect_to plans_url, notice: t('carts.check_membership.no_membership')
           }
         end
       elsif current_user.membership_expired?
         respond_to do |format|
           format.html {
-            redirect_to @book, notice: t('carts.check_membership.membership_expired')
-          }
-        end
-      elsif current_user.membership_extended?(@book)
-        respond_to do |format|
-          format.html {
-            redirect_to @book, notice: t('carts.check_membership.membership_extended')
+            redirect_to plans_url, notice: t('carts.check_membership.membership_expired')
           }
         end
       end

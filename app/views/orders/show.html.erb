@@ -106,6 +106,10 @@
                          <td>₹ <%= @cart.value %></td>
                        </tr>
                        <tr>
+                         <th>Amount Paid</th>
+                         <td>₹ <%= @order.paid_amt %></td>
+                       </tr>
+                       <tr>
                          <th>Delivery Date </th>
                          <td>Before <%= local_time(@order.created_at+7.day, "%B %e, %Y")  %></td>
                        </tr>

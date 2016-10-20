@@ -116,6 +116,10 @@
                          <th>Total</th>
                          <td>₹ <%= @cart.value %></td>
                        </tr>
+                       <tr>
+                         <th>Amount to be paid</th>
+                         <td>₹ <%= current_user.wallet.amount_to_be_paid(@cart.value) %></td>
+                       </tr>
                      </tbody>
                    </table>
                    <%= link_to 'Proced to Checkout', select_shipping_address_path, class: 'aa-browse-btn'  %>

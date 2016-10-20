@@ -23,7 +23,7 @@
               <ul class="aa-head-top-nav-right-signed-in">
                 <% @user_info = current_user.user_info %>
                 <% if @user_info.present? %>
-                  <li class="hidden-xs">
+                  <li>
                     <%= link_to user_info_path(@user_info), "data-toggle": "tooltip", "data-placement":"bottom", title: 'My Avatar' do %>
                       Hi <span> <%= current_user.name %> </span><i class="fa fa-user tealincolor"></i>
                     <% end %>
@@ -35,22 +35,27 @@
                     <% end %>
                   </li>
                 <% end %>
-                <li class="hidden-xs">
+                <li>
                   <%= link_to bookmarks_path, "data-toggle": "tooltip", "data-placement":"bottom", title: 'My Bookmarks' do %>
                     My Bookmarks <i class="fa fa-bookmark tealincolor medium-size-icons"></i>
                   <% end %>
                 </li>
-                <li class="hidden-xs">
+                <li>
                   <%= link_to carts_path, "data-toggle": "tooltip", "data-placement":"bottom", title: 'My Cart' do %>
                     My Cart <i class="fa fa-shopping-cart tealincolor medium-size-icons"></i>
                   <% end %>
                 </li>
-                <li class="hidden-xs">
+                <li>
                   <%= link_to orders_path, "data-toggle": "tooltip", "data-placement":"bottom", title: 'My Orders' do %>
                     My Orders <i class="fa fa-book tealincolor medium-size-icons"></i>
                   <% end %>
                 </li>
-                <li class="hidden-xs">
+                <li>
+                  <%= link_to orders_path, "data-toggle": "tooltip", "data-placement":"bottom", title: 'My Orders' do %>
+                    My Wallet <i class="fa fa-credit-card tealincolor medium-size-icons" aria-hidden="true"></i>
+                  <% end %>
+                </li>
+                <li>
                   <%= link_to destroy_user_session_path, "data-toggle": "tooltip", "data-placement":"bottom", title: 'Sign Out', method: :delete  do %>
                     Sign Out <i class="fa fa-sign-out tealincolor medium-size-icons"></i>
                   <% end %>

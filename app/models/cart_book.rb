@@ -7,8 +7,6 @@ class CartBook < ApplicationRecord
   end
 
   def delete_cart
-    puts "here"
-    puts self.cart.cart_books.size
     self.cart.destroy if self.cart.cart_books.empty?
   end
 

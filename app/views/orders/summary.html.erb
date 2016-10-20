@@ -130,16 +130,21 @@
                          <th>Total</th>
                          <td>₹ <%= @cart.value %></td>
                        </tr>
+                       <tr>
+                         <th>Amount to be paid</th>
+                         <% @amount = current_user.wallet.amount_to_be_paid(@cart.value) %>
+                         <td>₹ <%= @amount %></td>
+                       </tr>
                      </tbody>
                    </table>
-                   <%= link_to 'Place Order', cart_orders_path(@cart, address_id: @address.id), method: :post, class: 'aa-browse-btn'  %>
+                   <%= link_to 'Place Order', cart_orders_path(@cart, address_id: @address.id, amount: @amount), method: :post, class: 'aa-browse-btn'  %>
                  </div>
                </div>
              </div>
            </div>
          </div>
        </div>
-     </section>    
+     </section>
     <% end %>
    <!-- / Cart view section -->
 <%= render 'shared/support' %>

@@ -67,6 +67,7 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.create(
       value: @cart.value,
+      paid_amt: params[:amount].to_i,
       status: 0,
       cart_id: @cart.id,
       inv_no: Order.inv_no,

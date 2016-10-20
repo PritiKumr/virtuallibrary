@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_one :wallet
+
   has_many :orders
   has_one :user_info
   has_many :carts
@@ -12,6 +14,12 @@ class User < ApplicationRecord
   has_many :addresses
   has_many :bookmarks
   has_many :return_requests
+
+  after_create :initialize_wallet
+
+  def initialize_wallet
+    self.create_wallet(amount: 0)
+  end
 
   def is_active?
     user_info.status?
@@ -41,29 +49,29 @@ class User < ApplicationRecord
     end
   end
 
-  def active_cart_value
-    carts.active.value
-  end
+  # def active_cart_value
+  #   carts.active.value
+  # end
 
-  def active_order_value
-    orders.active.sum(:value)
-  end
+  # def active_order_value
+  #   orders.active.sum(:value)
+  # end
 
-  def valid_book_price?
-    max_price_reached? || membership_expired?
-  end
-
-  def max_price_reached?
-    active_order_value >= sub_plan.max_price || active_cart_value >= sub_plan.max_price
-  end
+  # def valid_book_price?
+  #   max_price_reached? || membership_expired?
+  # end
+  #
+  # def max_price_reached?
+  #   active_order_value >= sub_plan.max_price || active_cart_value >= sub_plan.max_price
+  # end
 
   def membership_expired?
     user_plan.expiry_date == Date.today
   end
 
-  def membership_extended?(book)
-    book.price > sub_plan.max_price
-  end
+  # def membership_extended?(book)
+  #   book.price > sub_plan.max_price
+  # end
 
   def name
     if user_info.present?
